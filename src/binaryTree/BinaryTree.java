@@ -85,6 +85,10 @@ public class BinaryTree {
         System.out.println(ancestor3.val);
 
 
+        System.out.println("判断二叉树是否为满二叉树,其结果为:" + root.isCompleteTreeNode(root));
+        System.out.println();
+
+
         /*
         System.out.print("\n");
         boolean result = fc.BSTSearch(root, 13);

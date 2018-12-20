@@ -13,6 +13,10 @@ public class VisitFunction {
     /**
      * 递归遍历二叉树
      */
+    /**
+     * 递归前序遍历
+     * @param root
+     */
     public void PreVisit(MyNode root){
         if (root == null){
             return ;
@@ -23,7 +27,10 @@ public class VisitFunction {
     }
 
 
-
+    /**
+     * 递归中序遍历
+     * @param root
+     */
     public void MiddleVisit(MyNode root){
         if(root == null){
             return;
@@ -34,6 +41,10 @@ public class VisitFunction {
     }
 
 
+    /**
+     * 递归后序遍历
+     * @param root
+     */
     public void PostVisit(MyNode root){
         if(root == null){
             return;
@@ -44,6 +55,10 @@ public class VisitFunction {
     }
 
 
+    /**
+     * 递归层次遍历
+     * @param root
+     */
     public void LevelVisit(MyNode root){
         if (root == null){
             return;
@@ -148,7 +163,6 @@ public class VisitFunction {
         /*
         将deque_全部元素进行弹栈操作
          */
-
         while(deque_.size() > 0){
             root = deque_.pop();
             root.visit();
