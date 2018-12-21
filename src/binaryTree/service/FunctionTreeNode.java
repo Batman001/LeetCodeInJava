@@ -124,10 +124,8 @@ public class FunctionTreeNode {
 
     }
 
-
-
     /**
-     * 层次遍历二叉树
+     * 层次遍历二叉树(递归实现)
      * @param root
      */
     public void levelVisit(TreeNode root){
@@ -342,6 +340,90 @@ public class FunctionTreeNode {
         }
         return null;
     }
+
+
+    /**
+     * Leetcode 107 Binary Tree Level Order Traversal II
+     * create at 2018.12.21 Batman
+     */
+    public List<List<Integer>> levelOrderBottom(TreeNode root){
+        List<List<Integer>> result = new ArrayList<>();
+        if(root == null){
+            return result;
+        }
+
+        // 设置容器存储层节点
+        // 处理层节点,从root节点开始
+        List<TreeNode> levelNodes = new ArrayList<>();
+        levelNodes.add(root);
+
+        // 处理当前层节点,并生成下层节点列表
+        while(levelNodes.size() != 0){
+            // 设置下层节点的存储容器
+            List<TreeNode> newLevelNodes = new ArrayList<>();
+            List<Integer> currentNodeVal = new ArrayList<>();
+            result.add(currentNodeVal);
+
+            for(TreeNode node:levelNodes){
+                currentNodeVal.add(node.val);
+
+                if (node.left != null){
+                    newLevelNodes.add(node.left);
+                }
+                if(node.right != null){
+                    newLevelNodes.add(node.right);
+                }
+            }
+            levelNodes = newLevelNodes;
+        }
+
+        // 将result中值进行逆置处理
+        for(int i=0;i<result.size()/2; i++){
+            List<Integer> temp = result.get(i);
+            result.set(i, result.get(result.size()-i-1));
+            result.set(result.size()-i-1, temp);
+        }
+
+        return result;
+
+    }
+
+    /**
+     * 递归实现层次遍历二叉树
+     * @param root
+     * @return
+     */
+    public List<List<Integer>> levelOrderBottomNonRecursive(TreeNode root){
+        List<List<Integer>> result = new ArrayList<>();
+
+        helper(root, 0, result);
+
+        // 将result中值进行逆置处理
+        for(int i=0;i<result.size()/2; i++){
+            List<Integer> temp = result.get(i);
+            result.set(i, result.get(result.size()-i-1));
+            result.set(result.size()-i-1, temp);
+        }
+        
+        return result;
+    }
+
+    private void helper(TreeNode root, int depth, List<List<Integer>> result) {
+        if (root == null){
+            return ;
+        }
+        if(result.size() == depth){
+            List<Integer> currentLevelNodesVals = new ArrayList<>();
+
+            result.add(currentLevelNodesVals);
+        }
+        helper(root.left, depth+1, result);
+        result.get(depth).add(root.val);
+        helper(root.right, depth+1, result);
+    }
+
+
+
 }
 
 

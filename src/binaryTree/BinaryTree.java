@@ -60,7 +60,7 @@ public class BinaryTree {
         System.out.print("\n");
 
 
-        System.out.print("层次遍历的非递归为：");
+        System.out.print("层次遍历的递归为：");
         fc.levelVisit(root);
         System.out.print("\n");
 
@@ -87,6 +87,19 @@ public class BinaryTree {
 
         System.out.println("判断二叉树是否为满二叉树,其结果为:" + root.isCompleteTreeNode(root));
         System.out.println();
+
+
+        System.out.println("测试新的层次从叶节点遍历方法 levelOrderBottom");
+        List<List<Integer>> levelOrderBottomResult = fc.levelOrderBottom(root);
+        for(List<Integer> item:levelOrderBottomResult){
+            System.out.println(item.toString());
+        }
+
+        System.out.println("测试新的层次遍历recursive方法 levelOrderBottom");
+        List<List<Integer>> levelOrderResult = fc.levelOrderBottomNonRecursive(root);
+        for(List<Integer> item:levelOrderResult){
+            System.out.println(item.toString());
+        }
 
 
         /*
