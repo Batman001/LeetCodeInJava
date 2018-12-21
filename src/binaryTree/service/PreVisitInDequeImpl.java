@@ -7,6 +7,8 @@ import java.util.Deque;
 
 /**
  * Created by sunchao on 2018/12/19.
+ * @author Batman
+ * 非递归前序遍历二叉树 使用队列实现
  */
 public class PreVisitInDequeImpl implements Visit {
     @Override
