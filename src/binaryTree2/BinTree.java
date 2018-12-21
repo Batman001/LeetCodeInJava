@@ -68,36 +68,36 @@ public class BinTree {
         System.out.println();
 
         System.out.print("递归前序遍历为: ");
-        vf.PreVisit(rootFact);
+        vf.preVisit(rootFact);
         System.out.print("\n");
 
         System.out.print("递归中序遍历为: ");
-        vf.MiddleVisit(rootFact);
+        vf.middleVisit(rootFact);
         System.out.print("\n");
 
 
         System.out.print("递归后序遍历为: ");
-        vf.PostVisit(rootFact);
+        vf.postVisit(rootFact);
         System.out.print("\n");
 
 
         System.out.print("递归层次遍历为: ");
-        vf.LevelVisit(rootFact);
+        vf.levelVisit(rootFact);
         System.out.print("\n");
 
         System.out.println("MaxDepth is "+vf.getMaxDepth(rootFact));
 
         System.out.print("非递归前序遍历为: ");
-        vf.PreVisit_(rootFact);
+        vf.preVisit_(rootFact);
         System.out.print("\n");
 
         System.out.print("非递归中序遍历为: ");
-        vf.MiddleVisit_(rootFact);
+        vf.middleVisit_(rootFact);
         System.out.print("\n");
 
 
         System.out.print("非递归后序遍历为: ");
-        vf.PostVisit_(rootFact);
+        vf.postVisit_(rootFact);
         System.out.print("\n");
 
 

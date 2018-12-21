@@ -17,13 +17,13 @@ public class VisitFunction {
      * 递归前序遍历
      * @param root
      */
-    public void PreVisit(MyNode root){
+    public void preVisit(MyNode root){
         if (root == null){
             return ;
         }
         root.visit();
-        PreVisit(root.getLeft());
-        PreVisit(root.getRight());
+        preVisit(root.getLeft());
+        preVisit(root.getRight());
     }
 
 
@@ -31,13 +31,13 @@ public class VisitFunction {
      * 递归中序遍历
      * @param root
      */
-    public void MiddleVisit(MyNode root){
+    public void middleVisit(MyNode root){
         if(root == null){
             return;
         }
-        MiddleVisit(root.getLeft());
+        middleVisit(root.getLeft());
         root.visit();
-        MiddleVisit(root.getRight());
+        middleVisit(root.getRight());
     }
 
 
@@ -45,12 +45,12 @@ public class VisitFunction {
      * 递归后序遍历
      * @param root
      */
-    public void PostVisit(MyNode root){
+    public void postVisit(MyNode root){
         if(root == null){
             return;
         }
-        PostVisit(root.getLeft());
-        PostVisit(root.getRight());
+        postVisit(root.getLeft());
+        postVisit(root.getRight());
         root.visit();
     }
 
@@ -59,7 +59,7 @@ public class VisitFunction {
      * 递归层次遍历
      * @param root
      */
-    public void LevelVisit(MyNode root){
+    public void levelVisit(MyNode root){
         if (root == null){
             return;
         }
@@ -94,7 +94,7 @@ public class VisitFunction {
      * @param root
      */
 
-    public void PreVisit_(MyNode root){
+    public void preVisit_(MyNode root){
         Deque<MyNode> deque = new ArrayDeque<>();
         while(root!=null || deque.size() > 0){
             while(root != null){
@@ -116,7 +116,7 @@ public class VisitFunction {
      * @param root
      */
 
-    public void MiddleVisit_(MyNode root){
+    public void middleVisit_(MyNode root){
         Deque<MyNode> deque = new ArrayDeque<>();
         while(root!=null || deque.size() > 0){
             while(root!=null){
@@ -136,7 +136,7 @@ public class VisitFunction {
      * 非递归实现二叉树后序遍历
      * @param root
      */
-    public void PostVisit_(MyNode root){
+    public void postVisit_(MyNode root){
         Deque<MyNode> deque = new ArrayDeque<>();
         Deque<MyNode> deque_ = new ArrayDeque<>();
         /*

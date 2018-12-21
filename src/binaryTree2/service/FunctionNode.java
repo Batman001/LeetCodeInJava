@@ -86,13 +86,13 @@ public class FunctionNode {
      * 前序递归遍历二叉树
      * @param root
      */
-    public void PreVisit(MyNode root) {
+    public void preVisit(MyNode root) {
         if (root == null) {
             return;
         }
         root.visit();
-        PreVisit(root.getLeft());
-        PreVisit(root.getRight());
+        preVisit(root.getLeft());
+        preVisit(root.getRight());
 
     }
 
@@ -101,13 +101,13 @@ public class FunctionNode {
      * 中序递归遍历二叉树
      * @param root
      */
-    public void MiddleVisit(MyNode root) {
+    public void middleVisit(MyNode root) {
         if (root == null) {
             return;
         }
-        MiddleVisit(root.getLeft());
+        middleVisit(root.getLeft());
         root.visit();
-        MiddleVisit(root.getRight());
+        middleVisit(root.getRight());
     }
 
 
@@ -115,12 +115,12 @@ public class FunctionNode {
      * 后序递归遍历二叉树
      * @param root
      */
-    public void PostVisit(MyNode root) {
+    public void postVisit(MyNode root) {
         if (root == null) {
             return;
         }
-        PostVisit(root.getLeft());
-        PostVisit(root.getRight());
+        postVisit(root.getLeft());
+        postVisit(root.getRight());
         root.visit();
 
     }
@@ -130,17 +130,17 @@ public class FunctionNode {
      * 层次递归遍历二叉树
      * @param root
      */
-    public void LevelVisit(MyNode root) {
+    public void levelVisit(MyNode root) {
         if (root == null) {
             return;
         }
         int depth = getMaxDepth(root);
         for (int i = 1; i <= depth; i++) {
-            VisitLevel(root, i);
+            visitLevel(root, i);
         }
     }
 
-    private void VisitLevel(MyNode root, int level) {
+    private void visitLevel(MyNode root, int level) {
         if (root == null || level < 1) {
             return;
         }
@@ -149,8 +149,8 @@ public class FunctionNode {
             return;
         }
 
-        VisitLevel(root.getLeft(), level - 1);
-        VisitLevel(root.getRight(), level - 1);
+        visitLevel(root.getLeft(), level - 1);
+        visitLevel(root.getRight(), level - 1);
     }
 
 
@@ -159,7 +159,7 @@ public class FunctionNode {
      * 非递归前序遍历二叉树
      * @param root
      */
-    public void PreVisit_(MyNode root) {
+    public void preVisit_(MyNode root) {
         Deque<MyNode> deque = new ArrayDeque<>();
         while (root != null || deque.size() > 0) {
             while (root != null) {
@@ -180,7 +180,7 @@ public class FunctionNode {
      * 非递归中序遍历二叉树
      * @param root
      */
-    public void MiddleVisit_(MyNode root) {
+    public void middleVisit_(MyNode root) {
         Deque<MyNode> deque = new ArrayDeque<>();
         while (root != null || deque.size() > 0) {
             while (root != null) {
@@ -200,7 +200,7 @@ public class FunctionNode {
      * 非递归后序遍历二叉树
      * @param root
      */
-    public void PostVisit_(MyNode root) {
+    public void postVisit_(MyNode root) {
         Deque<MyNode> deque = new ArrayDeque<>();
         Deque<MyNode> reverseDeque = new ArrayDeque<>();
         while (root != null || deque.size() > 0) {

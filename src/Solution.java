@@ -1,7 +1,7 @@
 import binaryTree.TreeNode;
 import binaryTree.service.MiddleVisitImpl;
 import binaryTree.service.PostVisitImpl;
-import binaryTree.service.PreVisitImpl;
+import binaryTree.service.PreVisitInStackImpl;
 import binaryTree.service.Visit;
 
 /**
@@ -71,7 +71,7 @@ public class Solution {
         int[] inorder = new int[]{9,3,15,20,7};
         TreeNode root = new Solution().reConstructBinaryTree(preorder, inorder);
 
-        Visit v1 = new PreVisitImpl();
+        Visit v1 = new PreVisitInStackImpl();
         Visit v2 = new MiddleVisitImpl();
         Visit v3 = new PostVisitImpl();
         System.out.printf("重建后的树的前序遍历为:\t");

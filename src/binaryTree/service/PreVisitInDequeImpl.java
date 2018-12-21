@@ -8,7 +8,7 @@ import java.util.Deque;
 /**
  * Created by sunchao on 2018/12/19.
  */
-public class PreVisitImpl implements Visit {
+public class PreVisitInDequeImpl implements Visit {
     @Override
     public void visitTree(TreeNode root) {
         if(root == null)
@@ -27,5 +27,7 @@ public class PreVisitImpl implements Visit {
         }
 
     }
+
+
 }
 
