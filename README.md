@@ -1,4 +1,4 @@
-Specification Heading
+Leetcode 刷题最高 每个工作日至少一题 FLAG 頑張れ
 =====================
 Created by Batman on 2018/12/19
 
@@ -6,5 +6,5 @@ Created by Batman on 2018/12/19
 
 其中包含常用的数据结构 包含链表 二叉树 堆 以及全排列算法实现
 
-Scenario Heading
+所有代码都经过测试过,可以放心clone(放心肉,有质量的肉肉)
 ----------------

@@ -404,7 +404,7 @@ public class FunctionTreeNode {
             result.set(i, result.get(result.size()-i-1));
             result.set(result.size()-i-1, temp);
         }
-        
+
         return result;
     }
 
