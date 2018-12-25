@@ -102,6 +102,10 @@ public class BinaryTree {
         }
 
 
+        System.out.println("Minumum Depth of Binary Tree: " + fc.getMinDepth(root));
+        System.out.println("Max Depth of Binary Tree: " + fc.getMaxDepth(root));
+
+
         /*
         System.out.print("\n");
         boolean result = fc.BSTSearch(root, 13);
