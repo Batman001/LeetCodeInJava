@@ -488,5 +488,120 @@ public class FunctionTreeNode {
         return hasPathSum2(root.left, sum) || hasPathSum(root.right, sum);
     }
 
+    /**
+     * Leetcode 114 Flatten Binary Tree to Linked List
+     * @param root
+     */
+    /**
+     * lastNode为空节点,用于对树进行连接
+     */
+    private TreeNode lastNode = null;
+    public void flatten (TreeNode root){
+        if(root == null){
+            return;
+        }
+        if(lastNode != null){
+            lastNode.left = null;
+            lastNode.right = root;
+        }
+
+        lastNode = root;
+        TreeNode right = root.right;
+        flatten(root.left);
+        flatten(right);
+    }
+
+
+    /**
+     * flattenNew 采用divide and conquer方法进行拉平
+     * @param root
+     */
+    public void flattenNew(TreeNode root){
+        helper(root);
+    }
+    private TreeNode helper(TreeNode root){
+        if(root == null){
+            return null;
+        }
+
+        TreeNode leftLast = helper(root.left);
+        TreeNode rightLast = helper(root.right);
+
+        // connect laftLast to root.right
+        if(leftLast != null){
+            leftLast.right = root.right;
+            root.right = root.left;
+            root.left = null;
+        }
+
+        if(rightLast != null){
+            return rightLast;
+        }
+        if(leftLast != null){
+            return leftLast;
+        }
+
+        return root;
+    }
+
+
+    /**
+     * 设置前置空节点,link 二叉树拉平后的结构
+     */
+    private TreeNode prev = null;
+
+    /**
+     * 根据Python的递归解法进行拉平 java实现
+     * @param root
+     */
+    public void flattenSecond(TreeNode root){
+        if(root == null){
+            return ;
+        }
+        prev = root;
+        flattenSecond(root.left);
+
+        // store right subtree and move previous left to right
+        TreeNode temp = root.right;
+
+        root.right = root.left;
+
+        // delete link to previous left
+        root.left = null;
+
+
+        // link last of flattened left to root of right subtree
+        prev.right = temp;
+        flattenSecond(temp);
+
+    }
+
+    /**
+     * 将二叉树转换成字符串形式(其实为非递归层次遍历)
+     * @param root
+     * @return
+     */
+    public String treeNodeToString(TreeNode root){
+        if(root == null){
+            return "[]";
+        }
+        String output = "";
+        Queue<TreeNode> nodeQueue = new LinkedList<>();
+        nodeQueue.add(root);
+        while(!nodeQueue.isEmpty()){
+            TreeNode node = nodeQueue.remove();
+
+            if(node == null){
+                output += "null, ";
+                continue;
+            }
+
+            output += String.valueOf(node.val) + ", ";
+            nodeQueue.add(node.left);
+            nodeQueue.add(node.right);
+        }
+        return "[" + output.substring(0, output.length()-2) + "]";
+
+    }
 
 }

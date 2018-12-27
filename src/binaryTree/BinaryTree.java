@@ -105,6 +105,14 @@ public class BinaryTree {
         System.out.println("Minumum Depth of Binary Tree: " + fc.getMinDepth(root));
         System.out.println("Max Depth of Binary Tree: " + fc.getMaxDepth(root));
 
+        System.out.println("对二叉树进行拉平");
+
+        TreeNode replaceRoot = root;
+//        fc.flattenSecond(replaceRoot);
+//        fc.flatten(replaceRoot);
+        fc.flattenNew(replaceRoot);
+        System.out.println(fc.treeNodeToString(replaceRoot));
+
 
         /*
         System.out.print("\n");
