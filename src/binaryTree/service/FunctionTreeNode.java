@@ -604,4 +604,19 @@ public class FunctionTreeNode {
 
     }
 
+    /**
+     * 判断两个二叉树是不是完全相同
+     * @param p
+     * @param q
+     * @return
+     */
+    public boolean isSameTree(TreeNode p, TreeNode q){
+        if(p!=null && q!=null && p.val == q.val){
+            return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+        }
+        else if(p==null && q==null){
+            return true;
+        }
+        return false;
+    }
 }
