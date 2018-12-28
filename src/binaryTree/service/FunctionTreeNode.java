@@ -619,4 +619,31 @@ public class FunctionTreeNode {
         }
         return false;
     }
+
+    /**
+     * Leetcode 98 Validate Binary Search Tree
+     * @param root
+     * @return
+     */
+    public boolean isValidBST(TreeNode root){
+        List<Integer> list = new ArrayList<>();
+        inorder(root, list);
+        for(int i=0;i<list.size()-1;i++){
+            if(list.get(i) >= list.get(i+1)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void inorder(TreeNode node, List<Integer> list) {
+        if(node == null){
+            return;
+        }
+        // 递归实现中序遍历 并将结果存储至list容器
+        inorder(node.left, list);
+        list.add(node.val);
+        inorder(node.right, list);
+    }
+
 }
