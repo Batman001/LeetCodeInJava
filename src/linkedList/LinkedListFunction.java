@@ -153,4 +153,81 @@ public class LinkedListFunction {
 
     }
 
+    /**
+     * LeetCode 328 Odd Event Linked List
+     * example 1->2->3->4->5->6   ==>    1->3->5->2->4->6
+     * 此方法需要新建两个链表,一个放置奇数节点,一个放置偶数节点,最后将偶数链表头放到奇数链表尾节点后
+     * @param head
+     * @return
+     */
+    public ListNode oddEvenList(ListNode head){
+        ListNode current = head;
+        int i = 1;
+
+        // 奇数链表表头
+        ListNode odd = new ListNode(0);
+        // 奇数链表表尾
+        ListNode oddTail = odd;
+
+
+        // 偶数链表表头
+        ListNode even = new ListNode(0);
+        // 偶数链表表尾
+        ListNode evenTail = even;
+
+        while(current.next != null){
+            if(i%2==1){
+                oddTail.next = new ListNode(current.val);
+                oddTail = oddTail.next;
+            }else{
+                evenTail.next = new ListNode(current.val);
+                evenTail = evenTail.next;
+            }
+            i++;
+            current = current.next;
+        }
+        oddTail.next = even.next;
+        return odd.next;
+
+    }
+
+    /**
+     * 根据初始head节点 打印LinkedList
+     * @param head
+     */
+    public void printNode(ListNode head){
+        if(head == null){
+            return;
+        }
+        while(head!=null){
+            System.out.printf(head.val + "->");
+            head = head.next;
+        }
+
+        System.out.println();
+    }
+
+
+    /**
+     * LeetCode 328 Odd Event Linked List
+     * 类似于oddEvenList 但是不用新建表,而是在原来基础之上
+     * @param head
+     * @return
+     */
+    public ListNode oddEvenList2(ListNode head){
+        if(head == null || head.next == null) {
+            return head;
+        }
+        ListNode odd = head, even = odd.next, evenHead = even;
+        while(even != null && even.next != null){
+            odd.next = even.next;
+            odd = odd.next;
+            even.next = odd.next;
+            even = even.next;
+        }
+        odd.next = evenHead;
+        return head;
+
+    }
+
 }
