@@ -123,10 +123,14 @@ public class LinkedListTest {
 
         System.out.println("进行链表的奇偶连接");
         LinkedListFunction fc = new LinkedListFunction();
-        ListNode connect = fc.oddEvenList(l1);
+//        ListNode connect = fc.oddEvenList(l1);
         ListNode connect1 = fc.oddEvenList2(l1);
-        fc.printNode(connect);
+//        fc.printNode(connect);
         fc.printNode(connect1);
+
+        System.out.println("链表从右侧进行旋转(k=2)的结果为: ");
+        ListNode rotateHead = fc.rotateRight(connect1, 2);
+        fc.printNode(rotateHead);
 
 
 

@@ -211,6 +211,7 @@ public class LinkedListFunction {
     /**
      * LeetCode 328 Odd Event Linked List
      * 类似于oddEvenList 但是不用新建表,而是在原来基础之上
+     * 奇数:odd  偶数:even
      * @param head
      * @return
      */
@@ -228,6 +229,38 @@ public class LinkedListFunction {
         odd.next = evenHead;
         return head;
 
+    }
+
+    /**
+     * 旋转链表 rotate List LeetCode 61
+     * example: 1->2->3->4->5 k=2(从右侧开始进行旋转) 从右侧数第二个ListNode开始旋转
+     * output: 4->5->1->2->3
+     *
+     * 解题思路:将链表做成环 然后从 链表长度-k  的位置进行断开
+     */
+    public ListNode rotateRight(ListNode head, int k){
+        if(head == null || k == 0){
+            return head;
+        }
+        // 设置链表长度为len
+        int len = 1;
+        ListNode p = head;
+        while(p.next != null){
+            len ++;
+            p = p.next;
+        }
+
+        // 将链表首尾相连
+        p.next = head;
+
+        // 然后将p指针向后移动 链表长度-k个位置  然后断开 返回head节点
+        k = k%len;
+        for(int i=0;i<len-k;i++){
+            p = p.next;
+        }
+        head = p.next;
+        p.next = null;
+        return head;
     }
 
 }
