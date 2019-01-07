@@ -7,8 +7,10 @@ public class LinkedListTest {
     public static void main(String[] args) {
         MyLinkedList m1 = new MyLinkedList();
         // 添加链表节点
+        m1.addAtHead(100);
         m1.addNode(9);
         m1.addNode(8);
+
         m1.addNode(6);
         m1.addNode(3);
         m1.addNode(5);
@@ -17,6 +19,16 @@ public class LinkedListTest {
         m1.addNode(3);
         m1.addNode(99);
 
+        m1.addAtHead(89);
+        m1.addAtTail(1000);
+
+        m1.addAtIndex(1, 88888);
+
+        m1.addAtIndex(0, 9999);
+
+
+        System.out.println("链表的空间大小是: "+m1.size);
+        System.out.println("链表的头结点的值是:" + m1.head.val);
         // 打印链表
         System.out.println("原始链表为:");
         m1.printLink();
@@ -25,8 +37,8 @@ public class LinkedListTest {
         System.out.println("链表中节点个数为:"+m1.length());
 
         // 链表排序
-        Node head = m1.linkSort();
-        System.out.println("排序后的链表头结点为:" + head.data);
+        ListNode head = m1.linkSort();
+        System.out.println("排序后的链表头结点为:" + head.val);
         System.out.println("排序后的链表为:");
         m1.printLink();
 
@@ -48,14 +60,14 @@ public class LinkedListTest {
         System.out.println();
 
         //返回链表中间节点
-        System.out.println("返回链表的中间节点的数值为:"+m1.findMiddleNode().data);
+        System.out.println("返回链表的中间节点的数值为:"+m1.findMiddleNode().val);
 
         // 判断链表是否有环
         System.out.println("判断链表是否有环: " + m1.isRinged());
 
 
         m1.printLink();
-        System.out.println("返回链表中最后节点的数值为:" + m1.getLastNode().data);
+        System.out.println("返回链表中最后节点的数值为:" + m1.getLastNode().val);
 
         // 删除指定节点
         MyLinkedList m2 = new MyLinkedList();
@@ -71,7 +83,7 @@ public class LinkedListTest {
 
         System.out.println("当前m2链表为:");
         m2.printLink();
-        System.out.println("m2链表中倒数第2个节点的数值为: "+m2.findReverNode(2).data);
+        System.out.println("m2链表中倒数第2个节点的数值为: "+m2.findReverNode(2).val);
         System.out.println("m2链表删除倒数第二个节点后为:");
         m2.deleteSpecialNode(m2.findReverNode(2));
         m2.printLink();
@@ -100,7 +112,7 @@ public class LinkedListTest {
 
         System.out.println("-----********-------");
         // 如果两个链表相交,求其第一个交点值
-        System.out.println(MyLinkedList.findFirstCrossPoint(m1,m2).data);
+        System.out.println(MyLinkedList.findFirstCrossPoint(m1,m2).val);
 
         ListNode l1 = new ListNode(1);
         ListNode l2 = new ListNode(2);
