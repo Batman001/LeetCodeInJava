@@ -1,12 +1,13 @@
-package binaryTree;
+package string.TrieTree;
 
 import java.util.HashMap;
 
 /**
  * Created by sunchao on 2018/12/19.
+ * @author Batman
  */
-public class Trie_Test {
-    public static void main(String args[])  //Just used for test
+public class TrieTest {
+    public static void main(String[] args)  //Just used for test
     {
         TrieTree trie = new TrieTree();
         trie.insert("I");
@@ -39,7 +40,7 @@ public class Trie_Test {
             System.out.println(key+" 出现: "+ map.get(key)+"次");
         }
 
-        if(trie.isExist("xiaoming")==false){
+        if(trie.isExist("xiaoming") == false){
             System.out.println("\n\n字典树中不存在：xiaoming ");
         }
 

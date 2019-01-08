@@ -1,4 +1,4 @@
-package binaryTree;
+package string.TrieTree;
 
 import java.util.HashMap;
 
@@ -17,19 +17,19 @@ public class TrieTree{
 
     private class Node{
         /**
-         * 该字串的重复数目，  该属性统计重复次数的时候有用,取值为0、1、2、3、4、5…
+         * 该字串的重复数目 该属性统计重复次数的时候有用,取值为0、1、2、3、4、5…
          */
-        private int dumpli_num;
+        private int dumpliNum;
 
         /**
-         * 以该字串为前缀的字串数， 应该包括该字串本身！！！！！
+         * 以该字串为前缀的字串数，应该包括该字串本身！！！！！
          */
-        private int prefix_num;
+        private int prefixNum;
 
         /**
          * 此处用数组实现，当然也可以map或list实现以节省空间
          */
-        private Node childs[];
+        private Node[] childs;
 
         /**
          * 是否为单词节点
@@ -37,10 +37,10 @@ public class TrieTree{
         private boolean isLeaf;
 
         public Node(){
-            dumpli_num=0;
-            prefix_num=0;
-            isLeaf=false;
-            childs=new Node[26];
+            dumpliNum = 0;
+            prefixNum = 0;
+            isLeaf = false;
+            childs = new Node[26];
         }
     }
 
@@ -75,17 +75,17 @@ public class TrieTree{
             int index=chrs[i]-'a';
             if(root.childs[index]!=null){
                 ////已经存在了，该子节点prefix_num++
-                root.childs[index].prefix_num++;
+                root.childs[index].prefixNum++;
             }else{
                 ///如果不存在
                 root.childs[index]=new Node();
-                root.childs[index].prefix_num++;
+                root.childs[index].prefixNum++;
             }
 
             ///如果到了字串结尾，则做标记
             if(i==length-1){
                 root.childs[index].isLeaf=true;
-                root.childs[index].dumpli_num++;
+                root.childs[index].dumpliNum++;
             }
             ///root指向子节点，继续处理
             root=root.childs[index];
@@ -117,9 +117,9 @@ public class TrieTree{
 
         if(root!=null){
 
-            if(root.isLeaf==true){
+            if(root.isLeaf == true){
                 ////当前即为一个单词
-                map.put(prefixs, root.dumpli_num);
+                map.put(prefixs, root.dumpliNum);
             }
 
             for(int i=0,length=root.childs.length; i<length;i++){
@@ -193,8 +193,8 @@ public class TrieTree{
             root=root.childs[index];
 
         }
-        ///结果包括该前缀本身
-        ///此处利用之前的前序搜索方法进行搜索
+        // 结果包括该前缀本身
+        // 此处利用之前的前序搜索方法进行搜索
         return preTraversal(root, prefix);
     }
 
