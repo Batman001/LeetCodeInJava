@@ -664,4 +664,96 @@ public class FunctionTreeNode {
         return root;
     }
 
+    /**
+     * LeetCode 617 Merge Two Binary Trees
+     * Given two binary trees and imagine that when you put one of them to cover the other,
+     * some nodes of the two trees are overlapped while the others are not.
+     * You need to merge them into a new binary tree.
+     * The merge rule is that if two nodes overlap,
+     * then sum node values up as the new value of the merged node.
+     * Otherwise, the NOT null node will be used as the node of new tree.
+     * @param t1 TreeNode t1
+     * @param t2 TreeNode t2
+     * @return TreeNode
+     */
+    public TreeNode mergeTrees(TreeNode t1, TreeNode t2){
+        if(t1 == null){
+            return t2;
+        }
+        if(t2 == null){
+            return t1;
+        }
+        TreeNode newRoot = new TreeNode(-1);
+        newRoot.val = t1.val + t2.val;
+        newRoot.left = mergeTrees(t1.left, t2.left);
+        newRoot.right = mergeTrees(t1.right, t2.right);
+
+        return newRoot;
+    }
+
+
+    List<TreeNode> treeList = new ArrayList<>();
+
+    /**
+     * 538. Convert BST to Greater Tree
+     * 中序遍历到列表中
+     * 自然的想到先用先序遍历把树转成数组，就得到了一个从小到大排序的数组，然后从后往前累加就可以了。
+     * @param root
+     * @return
+     */
+    public TreeNode convertBST(TreeNode root) {
+        /*
+        思路：采取先序遍历的方式，把所有节点加入到列表中，然后从后面起依次向前加即可
+        */
+        if(root == null || root.left == null && root.right == null){
+            return root;
+        }
+        inorder(root);
+
+
+        int len = treeList.size();
+        // 保存所有比当前节点大（即list中排在当前节点之后的元素）的和
+        int sum = treeList.get(len - 1).val;
+
+        for(int i = len - 2; i >= 0; i--){
+            int val = treeList.get(i).val;
+            treeList.get(i).val += sum;
+            sum += val;
+        }
+
+        return root;
+
+    }
+    private void inorder(TreeNode root){
+        if(root.left != null){
+            inorder(root.left);
+        }
+        treeList.add(root);
+        if(root.right != null){
+            inorder(root.right);
+        }
+    }
+
+
+    int sum=0;
+
+    /**
+     * 右根左 遍历顺序 然后进行累加即可
+     * LeetCode 538 Convert BST to Greater Tree
+     * @param root
+     * @return
+     */
+    public TreeNode convertBST2(TreeNode root) {
+        convert(root);
+        return root;
+    }
+
+    public void convert(TreeNode cur) {
+        if (cur == null) return;
+        convert(cur.right);
+        cur.val += sum;
+        sum = cur.val;
+        convert(cur.left);
+    }
+
 }
