@@ -492,6 +492,7 @@ public class FunctionTreeNode {
      * Leetcode 114 Flatten Binary Tree to Linked List
      * @param root
      */
+
     /**
      * lastNode为空节点,用于对树进行连接
      */
@@ -776,6 +777,56 @@ public class FunctionTreeNode {
             return true;
         }
         return isSubtree(s.left, t) || isSubtree(s.right, t);
+    }
+
+    /**
+     * LeetCode Maximum Binary Tree
+     * The root is the maximum number in the array.
+     * The left subtree is the maximum tree constructed from left part subarray divided by the maximum number.
+     * The right subtree is the maximum tree constructed from right part subarray divided by the maximum number.
+     * 思路:
+     * 1. 创建一个根节点,其值为数组的最大值
+     * 2. 创建根节点的左节点,左节点的值为数组左部分的最大值
+     * 3. 创建根节点的有节点,右节点的值为数组有部分的最大值
+     * @param nums
+     * @return
+     */
+    public static TreeNode constructMaximumBinaryTree(int[] nums){
+
+        return constructor(nums, 0, nums.length-1);
+
+    }
+
+    public static TreeNode constructor(int[] nums, int left, int right){
+        if (left > right){
+            return null;
+        }
+        int max = maxArrayIndex(nums, left, right);
+        TreeNode root = new TreeNode(nums[max]);
+        root.left = constructor(nums, left, max-1);
+        root.right = constructor(nums, max+1, right);
+        return root;
+    }
+
+    /**
+     * 获取数组nums中从left索引到right索引范围内的最大值得索引
+     * @param nums 目标数组
+     * @param left 取目标数组的左边开始边界
+     * @param right 目标数组的右边结束边界
+     * @return 截取边界内的最大值的索引
+     */
+    public static int maxArrayIndex(int[] nums, int left, int right){
+        int point = nums[left];
+        int max_index = left;
+        for(int i=left+1; i<=right; i++){
+            if (nums[i] > point){
+                max_index = i;
+                point = nums[i];
+            }else{
+                continue;
+            }
+        }
+        return max_index;
     }
 
 }

@@ -2,6 +2,7 @@ package heap;
 
 /**
  * Created by sunchao on 2018/12/19.
+ * @author Batman
  */
 
 import java.util.List;
@@ -12,11 +13,18 @@ import java.util.List;
  * @author Batman
  */
 public abstract class BaseHeapSort<E> {
-    public abstract boolean compare(E value1, E value2);//value1小于value2则返回true
+    /**
+     * value1小于value2则返回true
+     * @param value1
+     * @param value2
+     * @return
+     */
+    public abstract boolean compare(E value1, E value2);
 
     public boolean heapSort(List<E> list){//排序
         return heapSort(list, list.size());
     }
+
 
     public boolean heapSort(List<E> list, int n){
         if(null == list || 0 == list.size()){
@@ -32,6 +40,12 @@ public abstract class BaseHeapSort<E> {
         return true;
     }
 
+    /**
+     * 建立堆的过程
+     * @param list
+     * @param length
+     * @return
+     */
     public boolean heapCreate(List<E> list, int length){ //创建小根堆
         if(null == list || 0 == list.size()){
             return false;
@@ -44,7 +58,15 @@ public abstract class BaseHeapSort<E> {
         return true;
     }
 
-    public boolean heapAdjust(List<E> list, int middle, int length){//调整堆，使其满足小根堆的条件
+
+    /**
+     * 调整堆，使其满足小根堆的条件
+     * @param list
+     * @param middle
+     * @param length
+     * @return
+     */
+    public boolean heapAdjust(List<E> list, int middle, int length){
         if(null == list || 0 == list.size()){
             return false;
         }
@@ -63,7 +85,13 @@ public abstract class BaseHeapSort<E> {
         return true;
     }
 
-    public void swap(List<E> list, int i, int j){//数据交换
+    /**
+     * 数据交换 交换列表中索引为i和j位置的值
+     * @param list
+     * @param i
+     * @param j
+     */
+    public void swap(List<E> list, int i, int j){
         E temp = list.get(i);
         list.set(i, list.get(j));
         list.set(j, temp);

@@ -2,6 +2,7 @@ package heap;
 
 /**
  * Created by sunchao on 2018/12/19.
+ * @author Batman.
  */
 public class MaxHeapSortDemo {
     public static void main(String[] args){
@@ -19,9 +20,13 @@ public class MaxHeapSortDemo {
 
     }
 
+    /**
+     * 将数组按照建立完全二叉树的形式进行打印
+     * @param array 输入数组
+     */
     private static void printHeapTree(int[] array)
     {
-        for(int i=1;i<array.length;i=i*2)
+        for(int i=1; i<array.length; i=i*2)
         {
             for(int k = i-1; k < 2 * i - 1 && k < array.length; k++)
             {
@@ -30,6 +35,11 @@ public class MaxHeapSortDemo {
             System.out.println();
         }
     }
+
+    /**
+     * 打印数组
+     * @param array 输入数组
+     */
     private static void printHeap(int[] array)
     {
         for(int i=0;i<array.length;i++)
