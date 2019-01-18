@@ -5,7 +5,7 @@ import binaryTree.TreeNode;
 import java.util.Stack;
 
 /**
- * Created by sunchao on 2018/12/21.
+ * Created by Batman on 2018/12/21.
  * @author Batman
  * 非递归前序遍历二叉树
  * 使用栈数据结构实现

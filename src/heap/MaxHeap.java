@@ -4,7 +4,7 @@ import org.jetbrains.annotations.Contract;
 
 /**
  * @author Batman
- * Created by sunchao on 2018/12/19.
+ * Created by Batman on 2018/12/19.
  * 大根堆的类
  */
 public class MaxHeap {

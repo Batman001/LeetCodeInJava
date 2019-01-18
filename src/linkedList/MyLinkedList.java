@@ -1,7 +1,7 @@
 package linkedList;
 
 /**
- * Created by sunchao on 2018/12/19.
+ * Created by Batman on 2018/12/19.
  * @author Batman
  *
  * 这里设置的linked list的头结点是有值
@@ -11,7 +11,7 @@ package linkedList;
 import java.util.Hashtable;
 
 /**
- * Created by sunchao on 2018/11/21.
+ * Created by Batman on 2018/11/21.
  * @author Batman
  * 单链表常见算法
  */

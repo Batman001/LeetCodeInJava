@@ -5,7 +5,7 @@ import binaryTree.TreeNode;
 import java.util.Stack;
 
 /**
- * Created by sunchao on 2018/12/19.
+ * Created by Batman on 2018/12/19.
  */
 public class MiddleVisitImpl implements Visit {
     @Override

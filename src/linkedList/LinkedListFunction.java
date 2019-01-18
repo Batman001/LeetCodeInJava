@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by sunchao on 2018/12/28.
+ * Created by Batman on 2018/12/28.
  * 关于链表的各种函数方法
  * @author Batman
  *

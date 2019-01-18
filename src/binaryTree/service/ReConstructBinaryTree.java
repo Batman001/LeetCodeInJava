@@ -1,13 +1,12 @@
+package binaryTree.service;
+
 import binaryTree.TreeNode;
-import binaryTree.service.MiddleVisitImpl;
-import binaryTree.service.PostVisitImpl;
-import binaryTree.service.PrevisitInStackImpl;
-import binaryTree.service.Visit;
 
 /**
- * Created by sunchao on 2018/12/19.
+ * Created by Batman on 2018/12/19.
+ * @author Batman
  */
-public class Solution {
+public class ReConstructBinaryTree {
 
     /**
      * 根据二叉树前序和中序遍历结果,构建二叉树
@@ -69,7 +68,7 @@ public class Solution {
     public static void main(String[] args) {
         int[] preorder = new int[]{3,9,20,15,7};
         int[] inorder = new int[]{9,3,15,20,7};
-        TreeNode root = new Solution().reConstructBinaryTree(preorder, inorder);
+        TreeNode root = new ReConstructBinaryTree().reConstructBinaryTree(preorder, inorder);
 
         Visit v1 = new PrevisitInStackImpl();
         Visit v2 = new MiddleVisitImpl();

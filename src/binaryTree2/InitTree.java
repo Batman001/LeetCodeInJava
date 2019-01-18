@@ -1,7 +1,7 @@
 package binaryTree2;
 
 /**
- * Created by sunchao on 2018/12/19.
+ * Created by Batman on 2018/12/19.
  */
 public class InitTree {
     public static MyNode init(){

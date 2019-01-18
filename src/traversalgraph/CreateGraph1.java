@@ -1,7 +1,8 @@
-package search;
+package traversalgraph;
 
 /**
- * Created by sunchao on 2018/12/21.
+ * Created by Batman on 2018/12/21.
+ * @author Batman
  */
 import java.util.LinkedList;
 import java.util.Queue;
@@ -70,7 +71,7 @@ public class CreateGraph1 {
             graph.vertexArray[i]=vertex;
         }
 
-        System.out.println("请依次输入图的便边：");
+        System.out.println("请依次输入图的边：");
         for(int i=0;i<graph.edgeNum;i++){
             String preV=scan.next();
             String folV=scan.next();

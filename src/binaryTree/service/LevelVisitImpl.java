@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * Created by sunchao on 2018/12/19.
+ * Created by Batman on 2018/12/19.
  * 二叉树层次遍历 非递归实现方法
  */
 public class LevelVisitImpl implements Visit {

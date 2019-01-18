@@ -1,5 +1,5 @@
-/**
- * Created by sunchao on 2018/12/19.
+package ksum; /**
+ * Created by Batman on 2018/12/19.
  */
 
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by sunchao on 2018/11/16.
+ * Created by Batman on 2018/11/16.
  * Leetcode 15 three sum
  * (1)首先第一步进行排序
  * (2)固定一个数字 按照TwoSum的方法进行查找和为 -firstNum的组合

@@ -1,7 +1,7 @@
 package binaryTree2.service;
 
 /**
- * Created by sunchao on 2018/12/19.
+ * Created by Batman on 2018/12/19.
  */
 
 import binaryTree2.MyNode;
@@ -10,7 +10,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 /**
- * Created by sunchao on 2017/11/7.
+ * Created by Batman on 2017/11/7.
  * 中序遍历非递归实现
  */
 
