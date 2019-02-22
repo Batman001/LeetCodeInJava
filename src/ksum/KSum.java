@@ -86,11 +86,11 @@ public class KSum {
                     if(twoSum == twoSumTarget){
                         result.add(Arrays.asList(firstNumber, nums[leftIndex], nums[rightIndex]));
 
-                        // skip the duplicated number[leftIndex]
+                        // skip the duplicated nums[leftIndex]
                         while(leftIndex < rightIndex && nums[leftIndex] == nums[leftIndex+1]){
                             leftIndex ++;
                         }
-                        // skip the duplicated number[rightIndex]
+                        // skip the duplicated nums[rightIndex]
                         while(leftIndex < rightIndex && nums[rightIndex-1] == nums[rightIndex]){
                             rightIndex --;
                         }
