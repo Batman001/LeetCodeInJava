@@ -1,14 +1,13 @@
-package ksum; /**
- * Created by Batman on 2018/12/19.
- */
+package ksum;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by Batman on 2018/11/16.
- * Leetcode 15 three sum
+ * Leetode 15 three sum
+ * @author Batman on 2018/11/16.
  * (1)首先第一步进行排序
  * (2)固定一个数字 按照TwoSum的方法进行查找和为 -firstNum的组合
  * (3)在指针移动的过程中跳过出现的数字(进行去重操作)
@@ -62,8 +61,8 @@ public class KSum {
      * @param nums 数组
      * @return 返回符合条件的全部组合
      */
-    public static List<List<Integer>> threeSum(int[] nums){
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
+    public static List<List<Integer>> threeSum(int[] nums, int target){
+        List<List<Integer>> result = new ArrayList<>();
         int len = nums.length;
         if(len<3){
             return result;
@@ -79,7 +78,7 @@ public class KSum {
             if(i==0 || firstNumber != nums[i-1]){
                 int leftIndex = i+1;
                 int rightIndex = len -1;
-                int twoSumTarget = 0 - firstNumber;
+                int twoSumTarget = target - firstNumber;
 
                 // try to find two numbers that sum up to firstNumber
                 while(leftIndex < rightIndex){
@@ -156,6 +155,7 @@ public class KSum {
         int[] test = {-5,-2,-4,-2,-5,-4,0,0};
         int[] test1 = {1,0,-1,0,-2,2};
         System.out.println(fourSum(test1, 0));
+        System.out.println(threeSum(test1, 0));
         System.out.println(twoSum(test1, 0));
     }
 }
