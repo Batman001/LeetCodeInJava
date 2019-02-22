@@ -14,7 +14,55 @@ import java.util.List;
  * (3)在指针移动的过程中跳过出现的数字(进行去重操作)
  */
 public class KSum {
-    public List<List<Integer>> threeSum(int[] nums){
+
+
+    public static List<List<Integer>> twoSum(int[] nums, int target){
+        List<List<Integer>> result = new ArrayList<>();
+        int len = nums.length;
+        if(len<2){
+            return result;
+        }
+        Arrays.sort(nums);
+        int leftIndex = 0 ;
+        int rightIndex = len - 1;
+        while(leftIndex < rightIndex){
+            int twoSum = nums[leftIndex] + nums[rightIndex];
+            if(twoSum == target){
+                result.add(Arrays.asList(nums[leftIndex], nums[rightIndex]));
+
+                // skip the duplicated nums[leftIndex]
+                while(leftIndex < rightIndex && nums[leftIndex] == nums[leftIndex + 1]){
+                    leftIndex ++;
+
+                }
+
+                // skip the duplicated nums[rightIndex]
+                while(leftIndex < rightIndex && nums[rightIndex] == nums[rightIndex-1]){
+                    rightIndex --;
+                }
+
+                leftIndex ++;
+                rightIndex --;
+            }
+            else if(twoSum > target){
+                rightIndex --;
+            }else{
+                leftIndex ++;
+            }
+
+        }
+
+        return result;
+
+
+    }
+
+    /**
+     * 3Sum
+     * @param nums 数组
+     * @return 返回符合条件的全部组合
+     */
+    public static List<List<Integer>> threeSum(int[] nums){
         List<List<Integer>> result = new ArrayList<List<Integer>>();
         int len = nums.length;
         if(len<3){
@@ -108,6 +156,7 @@ public class KSum {
         int[] test = {-5,-2,-4,-2,-5,-4,0,0};
         int[] test1 = {1,0,-1,0,-2,2};
         System.out.println(fourSum(test1, 0));
+        System.out.println(twoSum(test1, 0));
     }
 }
 
