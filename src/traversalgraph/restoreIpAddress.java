@@ -15,7 +15,7 @@ public class RestoreIpAddress {
      * @param s 待处理IP地址字符串
      * @return 包含有效IP组合的列表容器
      */
-    public List<String> restoreIpAdddress(String s){
+    public List<String> restoreIpAddress(String s){
         List<String> res = new ArrayList<>();
         if(s.length() < 4 || s.length() > 12){
             return res;
@@ -60,10 +60,10 @@ public class RestoreIpAddress {
     }
 
     public static void main(String[] args) {
-        String ip = "002010";
+        String ip = "1002010";
         RestoreIpAddress function = new RestoreIpAddress();
 
-        System.out.println(function.restoreIpAdddress(ip));
+        System.out.println(function.restoreIpAddress(ip));
     }
 
 

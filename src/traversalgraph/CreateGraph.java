@@ -16,13 +16,13 @@ import java.util.Stack;
  * 3>.使用栈Stack迭代实现图的DFS遍历。</pre>
  * @author BATMAN
  */
-public class CreateGraph1 {
+public class CreateGraph {
     int time=0;
     Stack<Vertex1> stackVertex=new Stack<Vertex1>();
 
     public static void main(String[] args) {
-        Graph1 graph=new Graph1();
-        CreateGraph1 createGraph=new CreateGraph1();
+        Graph graph=new Graph();
+        CreateGraph createGraph=new CreateGraph();
         createGraph.initialGraph(graph);
         createGraph.outputGraph(graph);
 //      System.out.println("DFS搜索路径为(递归实现)：");
@@ -39,7 +39,7 @@ public class CreateGraph1 {
      * @param str 输入数据
      * @return返回一个顶点
      */
-    public Vertex1 getVertex(Graph1 graph,String str){
+    public Vertex1 getVertex(Graph graph, String str){
         for(int i=0;i<graph.verNum;i++){
             if(graph.vertexArray[i].verName.equals(str)){
                 return graph.vertexArray[i];
@@ -52,7 +52,7 @@ public class CreateGraph1 {
      * 根据用户输入的数据初始化一个图，以邻接表的形式构建!
      * @param graph 生成的图
      */
-    public void initialGraph(Graph1 graph){
+    public void initialGraph(Graph graph){
         @SuppressWarnings("resource")
         Scanner scan=new Scanner(System.in);
         System.out.println("请输入顶点数和边数：");
@@ -77,8 +77,9 @@ public class CreateGraph1 {
             String folV=scan.next();
 
             Vertex1 v1=getVertex(graph,preV);
-            if(v1==null)
+            if(v1==null) {
                 System.out.println("输入边存在图中没有的顶点！");
+            }
             Vertex1 v2=new Vertex1();
             v2.verName=folV;
             v2.nextNode=v1.nextNode;
@@ -99,7 +100,7 @@ public class CreateGraph1 {
      * 输入图的邻接表
      * @param graph 待输出的图
      */
-    public void outputGraph(Graph1 graph){
+    public void outputGraph(Graph graph){
         System.out.println("输出图的邻接链表为：");
         for(int i=0;i<graph.verNum;i++){
             Vertex1 vertex=graph.vertexArray[i];
@@ -120,10 +121,12 @@ public class CreateGraph1 {
      * @param graph 图
      * @return返回下标
      */
-    public int index(Vertex1 vertex,Graph1 graph){
+    public int index(Vertex1 vertex, Graph graph){
         for(int i=0;i<graph.verNum;i++){
-            if(vertex.verName.equals(graph.vertexArray[i].verName))
+            if(vertex.verName.equals(graph.vertexArray[i].verName)){
                 return i;
+            }
+
         }
         return -1;
     }
@@ -132,10 +135,10 @@ public class CreateGraph1 {
      * DFS深度优先遍历初始化
      * @param graph 图
      */
-    public void DFS(Graph1 graph){
+    public void dfsSearch(Graph graph){
         for(int i=0;i<graph.verNum;i++){
             if(graph.vertexArray[i].color.equals("white")){
-                DfsVisit(graph.vertexArray[i],graph);
+                dfsVisit(graph.vertexArray[i],graph);
                 System.out.println();
             }
         }
@@ -146,7 +149,7 @@ public class CreateGraph1 {
      * @param vertex 顶点
      * @param graph 图
      */
-    public void DfsVisit(Vertex1 vertex,Graph1 graph){
+    public void dfsVisit(Vertex1 vertex, Graph graph){
         vertex.color="gray";
         time=time+1;
         vertex.discoverTime=time;
@@ -155,8 +158,9 @@ public class CreateGraph1 {
         Vertex1 current=vertex.nextNode;
         while(current!=null){
             Vertex1 currentNow=getVertex(graph, current.verName);
-            if(currentNow.color.equals("white"))
-                DfsVisit(currentNow,graph);
+            if(currentNow.color.equals("white")) {
+                dfsVisit(currentNow, graph);
+            }
             current=current.nextNode;
         }
         vertex.color="black";
@@ -170,11 +174,12 @@ public class CreateGraph1 {
      * @param graph 图
      * @return 返回白色节点或是null
      */
-    public Vertex1 getAdj(Graph1 graph,Vertex1 vertex){
+    public Vertex1 getAdj(Graph graph, Vertex1 vertex){
         Vertex1 ver=getVertex(graph, vertex.verName);
         Vertex1 current=ver.nextNode;
-        if(current==null)
+        if(current==null) {
             return null;
+        }
         else{
             Vertex1 cur=getVertex(graph, current.verName);
             while(current!=null && cur.color.equals("gray")){
@@ -195,7 +200,7 @@ public class CreateGraph1 {
      * @param graph 图
      * @param vertex 顶点
      */
-    public void stackOperator(Graph1 graph,Vertex1 vertex){
+    public void stackOperator(Graph graph, Vertex1 vertex){
         vertex.color="gray";
         stackVertex.push(vertex);
         System.out.print(vertex.verName+"-->");
@@ -217,7 +222,7 @@ public class CreateGraph1 {
      * DFS遍历主函数
      * @param graph
      */
-    public void stackMain(Graph1 graph){
+    public void stackMain(Graph graph){
         for(int i=0;i<graph.verNum;i++){
             if(graph.vertexArray[i].color.equals("white")){
                 stackOperator(graph,graph.vertexArray[i]);
@@ -230,7 +235,7 @@ public class CreateGraph1 {
      * BFS广度优先搜索实现
      * @param graph 图
      */
-    public void BFS(Graph1 graph){
+    public void bfs(Graph graph){
         Vertex1 current=graph.vertexArray[0];
         current.color="gray";
         time=time+1;
