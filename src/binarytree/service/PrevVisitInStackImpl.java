@@ -10,7 +10,7 @@ import java.util.Stack;
  * 非递归前序遍历二叉树
  * 使用栈数据结构实现
  */
-public class PrevisitInStackImpl implements Visit {
+public class PrevVisitInStackImpl implements Visit {
     @Override
     public void visitTree(TreeNode root){
         if(root == null){

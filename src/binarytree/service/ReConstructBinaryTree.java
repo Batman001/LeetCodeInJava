@@ -10,11 +10,11 @@ public class ReConstructBinaryTree {
 
     /**
      * 根据二叉树前序和中序遍历结果,构建二叉树
-     * @param pre
-     * @param in
+     * @param pre 前序遍历数组
+     * @param in 中序遍历数组
      * @return
      */
-    public TreeNode reConstructBinaryTree(int [] pre, int [] in) {
+    private TreeNode reConstructBinaryTree(int [] pre, int [] in) {
 
         /**
          * 前序的第一个数定为根
@@ -31,8 +31,9 @@ public class ReConstructBinaryTree {
         int rootval=root.val;
         int i;
         for(i=0;i<len;i++){
-            if(rootval==in[i])
+            if(rootval==in[i]){
                 break;
+            }
         }
         //创建左子树
         if(i>0){
@@ -66,11 +67,11 @@ public class ReConstructBinaryTree {
     }
 
     public static void main(String[] args) {
-        int[] preorder = new int[]{3,9,20,15,7};
-        int[] inorder = new int[]{9,3,15,20,7};
-        TreeNode root = new ReConstructBinaryTree().reConstructBinaryTree(preorder, inorder);
+        int[] preOrder = new int[]{3,9,20,15,7};
+        int[] inOrder = new int[]{9,3,15,20,7};
+        TreeNode root = new ReConstructBinaryTree().reConstructBinaryTree(preOrder, inOrder);
 
-        Visit v1 = new PrevisitInStackImpl();
+        Visit v1 = new PrevVisitInStackImpl();
         Visit v2 = new MiddleVisitImpl();
         Visit v3 = new PostVisitImpl();
         System.out.printf("重建后的树的前序遍历为:\t");
