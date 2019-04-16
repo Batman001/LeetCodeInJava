@@ -1,6 +1,6 @@
 Leetcode 刷题最高 每个工作日至少一题 FLAG 頑張れ
 =====================
-Created by Batman on 2018/12/19
+@author Batman on 2018/12/19
 
 面试所用Leetcode题目进行JAVA刷题一些心得体会
 

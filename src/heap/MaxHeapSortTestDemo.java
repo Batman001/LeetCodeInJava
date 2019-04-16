@@ -1,7 +1,7 @@
 package heap;
 
 /**
- * Created by Batman on 2018/12/19.
+ * @author Batman on 2018/12/19.
  */
 public class MaxHeapSortTestDemo {
     public static void main(String[] args){

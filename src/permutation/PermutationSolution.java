@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Batman on 2018/12/19.
+ * @author Batman on 2018/12/19.
  */
 public class PermutationSolution {
     /**

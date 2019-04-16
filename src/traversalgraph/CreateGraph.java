@@ -1,7 +1,7 @@
 package traversalgraph;
 
 /**
- * Created by Batman on 2018/12/21.
+ * @author Batman on 2018/12/21.
  * @author Batman
  */
 import java.util.LinkedList;

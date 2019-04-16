@@ -3,7 +3,7 @@ package string.TrieTree;
 import java.util.HashMap;
 
 /**
- * Created by Batman on 2018/12/19.
+ * @author Batman on 2018/12/19.
  * @author Batman
  */
 public class TrieTest {

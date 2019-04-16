@@ -1,7 +1,7 @@
 package string.KMP;
 
 /**
- * Created by Batman on 2019/1/8.
+ * @author Batman on 2019/1/8.
  * @author Batman
  *
  */

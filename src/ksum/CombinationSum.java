@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by Batman on 2018/12/19.
+ * @author Batman on 2018/12/19.
  */
 public class CombinationSum {
     static List<List<Integer>> res;

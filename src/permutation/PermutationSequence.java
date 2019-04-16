@@ -1,7 +1,7 @@
 package permutation;
 
 /**
- * Created by Batman on 2019/1/2.
+ * @author Batman on 2019/1/2.
  * @author Batman
  * LeetCode 60 Permutation Sequence
  */
