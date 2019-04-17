@@ -45,6 +45,7 @@ public class BinaryTreeSumNumbers {
             return allPaths;
         }
         onePath.add(root.val);
+        System.out.println(onePath);
         if(root.left == null && root.right == null){
             allPaths.add(new ArrayList<>(onePath));
         }
@@ -52,6 +53,7 @@ public class BinaryTreeSumNumbers {
         findAllPath(root.left);
         findAllPath(root.right);
         onePath.remove(onePath.size() -1);
+        System.out.println("下面的onePath" + onePath);
         return allPaths;
     }
 
