@@ -110,15 +110,15 @@ public class FunctionTreeNode {
     /**
      * 计算二叉树的最深度
      *
-     * @param mynode
+     * @param root 二叉树的根节点
      * @return
      */
-    public int getMaxDepth(TreeNode mynode) {
-        if (mynode == null) {
+    public int getMaxDepth(TreeNode root) {
+        if (root == null) {
             return 0;
         }
-        int leftDepth = getMaxDepth(mynode.getLeft());
-        int rightDepth = getMaxDepth(mynode.getRight());
+        int leftDepth = getMaxDepth(root.getLeft());
+        int rightDepth = getMaxDepth(root.getRight());
         return Math.max(leftDepth, rightDepth) + 1;
 
     }
@@ -140,7 +140,6 @@ public class FunctionTreeNode {
 
     /**
      * 层次遍历二叉树(递归实现)
-     *
      * @param root
      */
     public void levelVisit(TreeNode root) {
