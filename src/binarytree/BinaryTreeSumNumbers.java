@@ -53,7 +53,6 @@ public class BinaryTreeSumNumbers {
         findAllPath(root.left);
         findAllPath(root.right);
         onePath.remove(onePath.size() -1);
-        System.out.println("下面的onePath" + onePath);
         return allPaths;
     }
 
