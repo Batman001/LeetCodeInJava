@@ -132,6 +132,18 @@ public class ArrayRelate {
     }
 
 
+    /**
+     * LeetCode 674 最长连续递增序列
+     * 给定一个未经排序的整数数组，找到最长且连续的的递增序列。
+     * @param nums int[]
+     * @return int
+     */
+    private int findLengtOfLCIS(int[] nums){
+        return -1;
+
+    }
+
+
 
     public static void main(String[] args) {
         ArrayRelate ar = new ArrayRelate();
