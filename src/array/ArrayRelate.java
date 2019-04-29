@@ -141,11 +141,25 @@ public class ArrayRelate {
     /**
      * LeetCode 674 最长连续递增序列
      * 给定一个未经排序的整数数组，找到最长且连续的的递增序列。
+     * 使用动态规划进行求解
      * @param nums int[]
      * @return int
      */
-    private int findLengtOfLCIS(int[] nums){
-        return -1;
+    private int findLengthOfLCIS(int[] nums){
+        if (nums.length == 0){
+            return 0;
+        }
+        int maxValue = 1, currentLen = 1;
+        for (int i=1; i<nums.length; i++){
+            if(nums[i] > nums[i-1]){
+                currentLen ++;
+            }else{
+                maxValue = Math.max(maxValue, currentLen);
+                currentLen = 1;
+            }
+        }
+        return Math.max(currentLen, maxValue);
+
 
     }
 
@@ -162,6 +176,9 @@ public class ArrayRelate {
         System.out.println(ar.removeElement(num, val));
 
         System.out.println(ar.rotateSortedArray(nums, val));
+
+        int[] testNums = {2,2,2,2,2};
+        System.out.println(ar.findLengthOfLCIS(testNums));
 
     }
 
