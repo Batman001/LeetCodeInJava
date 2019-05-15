@@ -40,7 +40,7 @@ public class TrieTest {
             System.out.println(key+" 出现: "+ map.get(key)+"次");
         }
 
-        if(trie.isExist("xiaoming") == false){
+        if(!trie.isExist("xiaoming")){
             System.out.println("\n\n字典树中不存在：xiaoming ");
         }
 

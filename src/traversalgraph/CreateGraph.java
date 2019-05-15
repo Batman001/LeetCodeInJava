@@ -17,8 +17,8 @@ import java.util.Stack;
  * @author BATMAN
  */
 public class CreateGraph {
-    int time=0;
-    Stack<Vertex1> stackVertex=new Stack<Vertex1>();
+    private int time=0;
+    private Stack<Vertex1> stackVertex=new Stack<Vertex1>();
 
     public static void main(String[] args) {
         Graph graph=new Graph();

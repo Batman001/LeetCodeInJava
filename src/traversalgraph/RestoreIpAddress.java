@@ -15,7 +15,7 @@ public class RestoreIpAddress {
      * @param s 待处理IP地址字符串
      * @return 包含有效IP组合的列表容器
      */
-    public List<String> restoreIpAddress(String s){
+    private List<String> restoreIpAddress(String s){
         List<String> res = new ArrayList<>();
         if(s.length() < 4 || s.length() > 12){
             return res;
