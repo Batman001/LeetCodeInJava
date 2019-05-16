@@ -4,16 +4,14 @@ package string;
  * @author Batman on 2019/1/2.
  * @author Batman
  * add a code from branch feature
+ * FindAnagrams 找出字符串中所有的变位词 LeetCode 438
+ * 滑动窗口思想
  */
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * FindAnagrams 找出字符串中所有的变位词 LeetCode 438
- * 滑动窗口思想
- */
 public class FindAnagrams {
     public List<Integer> findAnagrams(String s, String p){
         List<Integer> result = new ArrayList<>();

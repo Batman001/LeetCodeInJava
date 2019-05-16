@@ -1,19 +1,12 @@
 package linkedlist;
+import java.util.Hashtable;
 
 /**
  * @author Batman on 2018/12/19.
  * @author Batman
- *
+ * 单链表常见算法
  * 这里设置的linked list的头结点是有值
  * exp:    1(head)->2->3->4.....
- */
-
-import java.util.Hashtable;
-
-/**
- * @author Batman on 2018/11/21.
- * @author Batman
- * 单链表常见算法
  */
 public class MyLinkedList {
     /**

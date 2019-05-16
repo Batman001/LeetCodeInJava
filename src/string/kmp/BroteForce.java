@@ -1,4 +1,4 @@
-package string.KMP;
+package string.kmp;
 
 /**
  * @author Batman on 2019/1/8.
@@ -12,7 +12,7 @@ public class BroteForce {
      * @param ps  模式字符串
      * @return 如果匹配成功,返回主字符串的开始匹配的位置,否则返回-1
      */
-    public int bf(String ts, String ps){
+    private int bf(String ts, String ps){
 
         char[] t = ts.toCharArray();
 

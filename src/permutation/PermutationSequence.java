@@ -1,15 +1,11 @@
 package permutation;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Batman on 2019/1/2.
  * @author Batman
  * LeetCode 60 Permutation Sequence
- */
-
-import java.util.ArrayList;
-import java.util.List;
-
-/**
  * input: n=3, k=3
  * output: 213
  */

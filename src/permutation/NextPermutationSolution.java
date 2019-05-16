@@ -8,7 +8,7 @@ public class NextPermutationSolution {
         int len = nums.length;
         if(len<2) return;
 
-        /**
+        /*
          * 从倒数第二个元素开始,从后向前,找到第一个满足(后元素>前元素)的情况
          * 此时,记录前元素下表k,则[k+1,n-1]为一个单调非增子序列
          * 那么,这里只需要讲一个比nums[k]大的最小数与nums[k]进行交换

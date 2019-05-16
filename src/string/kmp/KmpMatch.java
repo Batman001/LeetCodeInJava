@@ -1,18 +1,18 @@
-package string.KMP;
+package string.kmp;
 
 /**
  * @author Batman on 2019/1/8.
  * @author Batman
  *
  */
-public class KMPMatch {
+public class KmpMatch {
     /**
      * 模式字符串当匹配不成功的时, j需要移动的位置 列表计算
      * 索引从0开始
      * @param ps
      * @return
      */
-    public int[] getNext(String ps){
+    private int[] getNext(String ps){
         char[] p = ps.toCharArray();
 
         int[] next = new int[p.length];
@@ -33,7 +33,7 @@ public class KMPMatch {
         return next;
     }
 
-    public int KMP(String ts, String ps){
+    private int Kmp(String ts, String ps){
         char[] t = ts.toCharArray();
         char[] p = ps.toCharArray();
 
@@ -67,7 +67,7 @@ public class KMPMatch {
     public static void main(String[] args) {
         String ts = "abbaabbaaba";
         String ps = "abbaaba";
-        System.out.println(new KMPMatch().KMP(ts, ps));
+        System.out.println(new KmpMatch().Kmp(ts, ps));
     }
 }
 
