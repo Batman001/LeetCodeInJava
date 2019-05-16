@@ -1,17 +1,14 @@
 package heap;
 
-/**
- * @author Batman on 2018/12/19.
- * @author Batman
- */
-
 import java.util.List;
 
 /**
+ * @author Batman on 2018/12/19.
+ * @author Batman
  * 基础的堆排序抽象类
  * @param <E>
- * @author Batman
  */
+
 public abstract class BaseHeapSort<E> {
     /**
      * value1小于value2则返回true
@@ -19,14 +16,14 @@ public abstract class BaseHeapSort<E> {
      * @param value2
      * @return
      */
-    public abstract boolean compare(E value1, E value2);
+    protected abstract boolean compare(E value1, E value2);
 
     public boolean heapSort(List<E> list){//排序
         return heapSort(list, list.size());
     }
 
 
-    public boolean heapSort(List<E> list, int n){
+    private boolean heapSort(List<E> list, int n){
         if(null == list || 0 == list.size()){
             return false;
         }
@@ -66,7 +63,7 @@ public abstract class BaseHeapSort<E> {
      * @param length
      * @return
      */
-    public boolean heapAdjust(List<E> list, int middle, int length){
+    private boolean heapAdjust(List<E> list, int middle, int length){
         if(null == list || 0 == list.size()){
             return false;
         }

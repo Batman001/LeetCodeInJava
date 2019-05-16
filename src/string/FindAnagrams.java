@@ -1,16 +1,12 @@
 package string;
-
-/**
- * @author Batman on 2019/1/2.
- * @author Batman
- * add a code from branch feature and master
- */
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 /**
+ * @author Batman on 2019/1/2.
+ * @author Batman
+ * add a code from branch feature and master
  * FindAnagrams 找出字符串中所有的变位词 LeetCode 438
  * 滑动窗口思想
  */

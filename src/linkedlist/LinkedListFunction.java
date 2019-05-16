@@ -13,8 +13,8 @@ public class LinkedListFunction {
 
     /**
      * 判断链表是否出现环 LeetCode 141
-     * @param head
-     * @return
+     * @param head 链表Head
+     * @return boolean 是否出现环
      */
     public boolean hasCycle(ListNode head){
         if(head == null){
@@ -54,7 +54,7 @@ public class LinkedListFunction {
             fast = fast.next.next;
             // 判断是否有环 如果出现环, 则寻找环的入口节点
 
-            /**
+            /*
              * a:从head到环入口节点路程
              * x:为从环入口到第一次快慢指针相遇的路程
              * c:环的长度
