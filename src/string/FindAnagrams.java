@@ -45,15 +45,15 @@ public class FindAnagrams {
         if(p.length()>s.length()){
             return new ArrayList<>();
         }
-        /**
+        /*
          * set all strings of s in map and initialize to 0
          */
         for (int k=0;k<s.length();k++){
             map.put(s.charAt(k), 0);
         }
 
-        /**
-         * set all strings of p in map and for each occurence of character in p increment
+        /*
+         * set all strings of p in map and for each occur of character in p increment
          * the value in the map
          */
 
@@ -70,8 +70,8 @@ public class FindAnagrams {
         int left=0,right=0,count = p.length();
         List<Integer> list = new ArrayList<>();
         while(right<s.length()){
-            /**
-             * Decrement count in map only for each occurence of character s in p
+            /*
+             * Decrement count in map only for each occur of character s in p
              */
             if(map.get(s.charAt(right))>0){
                 count --;
@@ -80,7 +80,7 @@ public class FindAnagrams {
 
             while(count==0){
                 if(right-left+1 == p.length()){
-                    /** record start index left of anagram */
+                    /* record start index left of anagram */
                     list.add(left);
                 }
 
@@ -88,7 +88,7 @@ public class FindAnagrams {
                     count ++;
                 }
 
-                /** record the occurence of character at index i in map */
+                /* record the occur of character at index i in map */
                 map.put(s.charAt(left), map.get(s.charAt(left)) + 1);
                 left ++;
             }
