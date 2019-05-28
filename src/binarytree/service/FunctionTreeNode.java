@@ -1,15 +1,13 @@
 package binarytree.service;
 
-/**
- * @author Batman on 2018/12/19.
- * @author Batman
- * 二叉排序树的各种方法类
- */
-
 import binarytree.TreeNode;
 
 import java.util.*;
 
+/**
+ * @author Batman on 2018/12/19.
+ * 二叉排序树的各种方法类
+ */
 public class FunctionTreeNode {
 
     /**
@@ -340,7 +338,7 @@ public class FunctionTreeNode {
     }
 
     /**
-     * 寻找二叉排序树的两个节点的最近公共祖先节点
+     * 寻找二叉查找树的两个节点的最近公共祖先节点
      *
      * @param root
      * @param p
