@@ -25,8 +25,27 @@ public class BinarySearchTree {
     /**
      * constructor function
      */
-    public BinarySearchTree(){
+    BinarySearchTree(){
         root = null;
+    }
+
+    BinarySearchTree(Node root){
+        root = root;
+    }
+
+
+    private Node searchRec(Node root, int key) {
+        if(root == null){
+            return null;
+        }
+        if(root.val == key){
+            return root;
+        }
+        else if(root.val < key){
+            return searchRec(root.right, key);
+        }else{
+            return searchRec(root.left, key);
+        }
     }
 
 
@@ -195,6 +214,10 @@ public class BinarySearchTree {
         tree.insert(40);
         tree.insert(60);
         tree.insert(80);
+
+        System.out.println("Search a node of the given tree");
+        BinarySearchTree subTree = new BinarySearchTree(tree.searchRec(tree.root, 30));
+        subTree.inorder();
 
         System.out.println("Inorder traversal of the given tree");
         tree.inorder();

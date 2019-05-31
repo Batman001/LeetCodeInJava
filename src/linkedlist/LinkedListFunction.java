@@ -175,7 +175,7 @@ public class LinkedListFunction {
         // 偶数链表表尾
         ListNode evenTail = even;
 
-        while(current.next != null){
+        while(current != null){
             if(i%2==1){
                 oddTail.next = new ListNode(current.val);
                 oddTail = oddTail.next;
@@ -219,7 +219,11 @@ public class LinkedListFunction {
         if(head == null || head.next == null) {
             return head;
         }
+        // odd 奇数链表表头
+        // even 偶数链表表头
         ListNode odd = head, even = odd.next, evenHead = even;
+
+        // while循环终止条件是 偶数链表非空 并且 偶数链表的next 非空
         while(even != null && even.next != null){
             odd.next = even.next;
             odd = odd.next;
@@ -263,4 +267,43 @@ public class LinkedListFunction {
         return head;
     }
 
+    /**
+     * 链表的转置函数
+     * @param head 链表转置起始节点
+     * @param tail 链表转置终止节点
+     * @return 转置后的链表表头
+     */
+    private ListNode reverseInPart(ListNode head, ListNode tail){
+        ListNode curNode = head;
+        ListNode preNode = null;
+        tail = tail.next;
+        while (curNode != tail){
+            ListNode next = curNode.next;
+            curNode.next = preNode;
+            preNode = curNode;
+            curNode = next;
+        }
+        head.next = tail;
+        return preNode;
+
+    }
+
+
+
+    public static void main(String[] args) {
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        head.next.next.next.next = new ListNode(5);
+        LinkedListFunction function = new LinkedListFunction();
+//        ListNode res = function.oddEvenList(head);
+//        ListNode res_ = function.oddEvenList2(head);
+//        function.printNode(res);
+//        function.printNode(res_);
+
+        ListNode reversePrt = function.reverseInPart(head, head.next.next.next);
+        System.out.printf("链表部分逆置后的结果为:");
+        function.printNode(reversePrt);
+    }
 }

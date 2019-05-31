@@ -8,7 +8,8 @@ package linkedlist;
  * 如果有两个中间结点，则返回第二个中间结点。
  *
  */
-public class LeetCode_876 {
+public class MiddleNode {
+
     public ListNode findMiddleNode(ListNode head){
 
         if(head == null){
