@@ -236,7 +236,7 @@ public class MyLinkedList {
      * @param k
      * @return
      */
-    public ListNode findReverNode(int k){
+    public ListNode findRevertNode(int k){
         if(k<1 || k>length()){
             return null;
         }

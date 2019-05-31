@@ -83,9 +83,9 @@ public class LinkedListTest {
 
         System.out.println("当前m2链表为:");
         m2.printLink();
-        System.out.println("m2链表中倒数第2个节点的数值为: "+m2.findReverNode(2).val);
+        System.out.println("m2链表中倒数第2个节点的数值为: "+m2.findRevertNode(2).val);
         System.out.println("m2链表删除倒数第二个节点后为:");
-        m2.deleteSpecialNode(m2.findReverNode(2));
+        m2.deleteSpecialNode(m2.findRevertNode(2));
         m2.printLink();
 
         System.out.println("链表连接前为:");

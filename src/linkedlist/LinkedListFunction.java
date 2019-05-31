@@ -289,6 +289,97 @@ public class LinkedListFunction {
     }
 
 
+    /**
+     * 翻转链表 从head指针开始翻转k个节点  返回链表翻转后的head指针
+     * @param head 链表head指针
+     * @param k 翻转的节点个数
+     * @return 链表翻转后的head指针
+     */
+    private ListNode reverseByCount(ListNode head, int k){
+        int count = 1;
+        ListNode curNode = head;
+        ListNode preNode = null;
+
+        /* reverse 的结束节点 */
+        ListNode revTail = head;
+
+        while(count <= k){
+            ListNode next = curNode.next;
+            curNode.next = preNode;
+            preNode = curNode;
+            curNode = next;
+            revTail = next;
+            count += 1;
+
+        }
+        head.next = revTail;
+        return preNode;
+
+    }
+
+    /**
+     * leetcode25 K 个一组翻转链表
+     * @param head 链表的头指针
+     * @param k 每次翻转的长度
+     * @return 翻转后链表的头指针
+     */
+    public ListNode reverseKGroup(ListNode head, int k){
+        // 保存头结点
+        ListNode cur = head;
+
+        int length = 0;
+
+        ListNode p = cur;
+        if(k == 1){
+            return head;
+        }
+        /*
+         * 统计得到链表的长度
+         */
+        while(p != null){
+            p = p.next;
+            length += 1;
+        }
+
+        /* cnt表示目前为止一共reverse了几个节点 */
+        int cnt = 0;
+
+        while(cur != null){
+            // 判断翻转k个是否越界
+            if(cnt + k <= length){
+                // 分情况讨论，如果是第一次reverse
+                if(cnt == 0){
+                    head = reverseByCount(cur, k);
+                    cnt += k;
+                } else{
+                    // 分情况讨论 如果不是第一次reverse
+                    ListNode nextNode = cur.next;
+
+                    /*通过函数传递一个 newHead,用 newHead 才能改变cur.next的值
+                    在调用reverseByCount函数过程中 nextNode指针也发生了变化
+                    此时 nextNode 指针位于翻转后的最后一个节点 */
+                    ListNode newHead = reverseByCount(nextNode, k);
+
+                    // 翻转了K个，数量增加K个
+                    cnt += k;
+
+                    // 上个节点的尾部的下一个指向新头
+                    cur.next = newHead;
+
+                    // 让cur前进, cur指向翻转后的链表的尾部
+                    cur = nextNode;
+                }
+            }
+            // 越界就说明我们已经reverse了能reverse的部分，直接退出
+            else{
+                break;
+            }
+
+        }
+
+        return head;
+    }
+
 
     public static void main(String[] args) {
         ListNode head = new ListNode(1);
@@ -302,8 +393,12 @@ public class LinkedListFunction {
 //        function.printNode(res);
 //        function.printNode(res_);
 
-        ListNode reversePrt = function.reverseInPart(head, head.next.next.next);
-        System.out.printf("链表部分逆置后的结果为:");
-        function.printNode(reversePrt);
+//        ListNode reversePrt = function.reverseInPart(head, head.next.next.next);
+//        System.out.printf("链表部分逆置后的结果为:");
+//        function.printNode(reversePrt);
+
+//        ListNode res = function.reverseByCount(head, 3);
+        ListNode res = function.reverseKGroup(head, 2);
+        function.printNode(res);
     }
 }
