@@ -339,6 +339,52 @@ public class MyLinkedList {
 
     }
 
+
+    /**
+     * 得到有环链表的入环节点
+     * @return 第一个入环的节点
+     * leetcode 142
+     *
+     * 计算方案 设从头结点到入环节点长度为n 快慢指针相遇的点距离入环点为m k为快指针绕环的圈数,l是链表环的长度
+     * 则慢指针行走距离为 m+n， 快指针行走距离为 m+n+kl
+     * 于是 2(m+n)=m+n+kl 则 kl = m+n
+     * 计算方法 慢指针从相遇点继续出发 快指针指向头结点 然后快慢指针一起移动 相遇的节点即为 第一个入环节点
+     * 因为慢指针行走的距离为kl-m 而kl-m = n 正好是从头结点到第一个入环节点的距离
+     */
+    public ListNode getLoopNode(){
+        // 判断链表的长度 如果为0、1、2的话 则返回null
+        if(head == null || head.next == null || head.next.next == null){
+            return null;
+        }
+        ListNode slow = head;
+        ListNode fast = head;
+
+        // 判断是否有环
+        while(fast.next != null && fast.next.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast){
+                break;
+            }
+        }
+
+        // 如果没有环 直接返回null
+        if(fast != slow){
+            return null;
+        }
+
+        // 令快指针指向头结点
+        fast = head;
+
+        while(slow != fast){
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        return fast;
+    }
+
+
     /**
      * 返回链表的最后一个节点
      */
@@ -389,13 +435,13 @@ public class MyLinkedList {
 
     /**
      * 如果链表相交,求链表相交的起始点
-     * 1. 首先判断链表是否相交,如果两个链表不想交,返回null
+     * 1. 首先判断链表是否相交,如果两个链表不相交,返回null
      * 2. 求出两个链表的长度之差 len = length1-length2
      * 3. 让较长链表先走len步
      * 4. 然后两个链表同时移动,每移动一次就比较他们节点是否相等,第一个相等的节点即为所求
      */
     public static ListNode findFirstCrossPoint(MyLinkedList m1, MyLinkedList m2){
-        // 链表不想交
+        // 链表不相交
         if(!isCross(m1.head, m2.head)){
             return null;
         }
