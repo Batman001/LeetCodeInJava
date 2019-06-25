@@ -10,8 +10,9 @@ import java.util.Stack;
 public class MiddleVisitImpl implements Visit {
     @Override
     public void visitTree(TreeNode root) {
-        if(root == null)
+        if(root == null) {
             return;
+        }
         Stack<TreeNode> stack = new Stack<>();
 
         while(root!=null || !stack.isEmpty()){

@@ -324,9 +324,9 @@ public class TreeNode {
      */
 
 
-    ArrayList<Integer> preOrder(TreeNode root){
+    List<Integer> preOrder(TreeNode root){
         Stack<TreeNode> stack = new Stack<TreeNode>();
-        ArrayList<Integer> list = new ArrayList<Integer>();
+        List<Integer> list = new ArrayList<Integer>();
         if(root == null){
             return list;
         }

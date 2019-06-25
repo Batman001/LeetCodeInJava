@@ -192,8 +192,9 @@ public class FunctionTreeNode {
      */
     public boolean getNodePath(TreeNode root, TreeNode node, Stack<Integer> path) {
 
-        if (root == node)
+        if (root == node) {
             return true;
+        }
         path.push(root.getVal());
 
         boolean found = false;
@@ -205,8 +206,9 @@ public class FunctionTreeNode {
         if (!found && root.getRight() != null) {
             found = getNodePath(root.getRight(), node, path);
         }
-        if (!found)
+        if (!found) {
             path.pop();
+        }
         return found;
     }
 
@@ -219,14 +221,16 @@ public class FunctionTreeNode {
      * @return
      */
     public boolean hasNode(TreeNode root, TreeNode node) {
-        if (root == null || node == null)
+        if (root == null || node == null) {
             return false;
-        if (root == node)
+        }
+        if (root == node) {
             return true;
-
+        }
         boolean found = hasNode(root.getLeft(), node);
-        if (!found)
+        if (!found) {
             found = hasNode(root.getRight(), node);
+        }
         return found;
     }
 
@@ -240,17 +244,19 @@ public class FunctionTreeNode {
      */
     public boolean getPath(TreeNode root, TreeNode node, ArrayList<TreeNode> path) {
 
-        if (root == node)
+        if (root == node) {
             return true;
-
+        }
         path.add(root);
 
         boolean found = false;
-        if (root.getLeft() != null)
+        if (root.getLeft() != null) {
             found = getPath(root.getLeft(), node, path);
+        }
 
-        if (!found && root.getRight() != null)
+        if (!found && root.getRight() != null) {
             found = getPath(root.getRight(), node, path);
+        }
         if (!found) {
             path.remove(path.size() - 1);
         }
@@ -265,22 +271,26 @@ public class FunctionTreeNode {
      */
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> list = new ArrayList<List<Integer>>();
-        if (root == null)
+        if (root == null) {
             return list;
+        }
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
         queue.add(root);
         while (queue.size() != 0) {
             List<Integer> alist = new ArrayList<Integer>();
-            for (TreeNode child : queue)
+            for (TreeNode child : queue) {
                 alist.add(child.getVal());
+            }
             list.add(new ArrayList<Integer>(alist));
             Queue<TreeNode> queue2 = queue;
             queue = new LinkedList<TreeNode>();
             for (TreeNode child : queue2) {
-                if (child.getLeft() != null)
+                if (child.getLeft() != null) {
                     queue.add(child.getLeft());
-                if (child.getRight() != null)
+                }
+                if (child.getRight() != null) {
                     queue.add(child.getRight());
+                }
             }
         }
         return list;
@@ -454,8 +464,9 @@ public class FunctionTreeNode {
     }
 
     private boolean checkPathSum(TreeNode root, int sum, int brachSum) {
-        if (root == null)
+        if (root == null) {
             return sum == brachSum;
+        }
         brachSum += root.val;
 
         if (root.left == null) {
@@ -824,6 +835,46 @@ public class FunctionTreeNode {
             }
         }
         return max_index;
+    }
+
+
+    /**
+     * Leetcode145 二叉树的后序遍历 非递归实现
+     * 处理方法：
+     * 步骤一: 非递归实现 根 -> 右孩子 -> 左孩子（使用栈结构 参考非递归实现前序遍历）
+     * 步骤二: 使用第二个栈结构 对压栈结构 进行逆序输出
+     * @param root 二叉树的根节点
+     * @return 返回二叉树遍历的结果
+     */
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if(root == null) {
+            return res;
+        }
+
+        Stack<TreeNode> normalStack = new Stack<>();
+        Stack<TreeNode> reverseStack = new Stack<>();
+
+        normalStack.push(root);
+
+        while(!normalStack.isEmpty()) {
+            TreeNode curNode = normalStack.pop();
+            reverseStack.push(curNode);
+
+            if(curNode.left != null) {
+                normalStack.push(curNode.left);
+            }
+
+            if(curNode.right != null) {
+                normalStack.push(curNode.right);
+            }
+        }
+
+        while(!reverseStack.isEmpty()) {
+            res.add(reverseStack.pop().val);
+        }
+
+        return res;
     }
 
 }
