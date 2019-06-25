@@ -1,6 +1,7 @@
 package permutation;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ public class PermutationSolution {
      */
     List<List<Integer>> res = new ArrayList<List<Integer>>();
 
-    public List<List<Integer>> premutate(int[] nums){
+    public List<List<Integer>> permute(int[] nums){
 
 
         int len = nums.length;
@@ -47,6 +48,16 @@ public class PermutationSolution {
         int temp = nums[i];
         nums[i] = nums[j];
         nums[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 3, 4};
+        PermutationSolution solution = new PermutationSolution();
+        List<List<Integer>> res = solution.permute(nums);
+        for(List<Integer> item : res){
+            System.out.println(Arrays.toString(item.toArray()));
+        }
+
     }
 
 }

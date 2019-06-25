@@ -4,9 +4,12 @@ package permutation;
  * @author Batman on 2018/12/19.
  */
 public class NextPermutationSolution {
+
     public void nextPermutation(int[] nums){
         int len = nums.length;
-        if(len<2) return;
+        if(len < 2 ) {
+            return;
+        }
 
         /*
          * 从倒数第二个元素开始,从后向前,找到第一个满足(后元素>前元素)的情况
@@ -22,7 +25,6 @@ public class NextPermutationSolution {
             }
             else{
                 lastEle = nums[k];
-                continue;
             }
         }
 
@@ -46,10 +48,15 @@ public class NextPermutationSolution {
                 swap(nums, i, k+len-1);
             }
         }
-        return;
 
     }
-    // 交换元素
+
+    /**
+     * 交换元素
+     * @param nums 被交换的数组
+     * @param i nums[i]
+     * @param j nums[j]
+     */
     public void swap(int[] nums, int i, int j){
         int temp = nums[i];
         nums[i] = nums[j];
