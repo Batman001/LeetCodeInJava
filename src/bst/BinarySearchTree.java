@@ -55,10 +55,10 @@ public class BinarySearchTree {
 
 
     /**
-     * A recursive function to insert a new key in BST
+     * A recursive function to delete a new key in BST
      * @param root 二叉查找树根节点
      * @param key 指定节点的key值
-     * @return 删除的节点Node
+     * @return 删除后的二叉查找树的根节点
      */
     private Node deleteRec(Node root, int key){
         /* Base Case: If the tree is empty */
