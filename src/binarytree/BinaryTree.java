@@ -17,17 +17,17 @@ public class BinaryTree {
 
         // 插入3个节点到二叉排序树
 
-        fc.BSTInsert(root,new TreeNode(13, null, null));
+        fc.BSTInsert(root, new TreeNode(13, null, null));
         fc.BSTInsert(root, new TreeNode(2,null,null));
         fc.BSTInsert(root, new TreeNode(89, null,null));
 
         // 使用preCollect 按照前序遍历方法收集二叉树的节点
-        ArrayList<TreeNode> preresult = new ArrayList<TreeNode>();
-        fc.preCollect(root,preresult);
+        ArrayList<TreeNode> preResult = new ArrayList<TreeNode>();
+        fc.preCollect(root,preResult);
 
         System.out.println("前序存储结果为:");
-        for(int i=0;i<preresult.size();i++) {
-            System.out.print(preresult.get(i).getVal()+" ");
+        for(int i=0;i<preResult.size();i++) {
+            System.out.print(preResult.get(i).getVal()+" ");
         }
         System.out.println();
 
@@ -113,6 +113,11 @@ public class BinaryTree {
 //        fc.flatten(replaceRoot);
         fc.flattenNew(replaceRoot);
         System.out.println(fc.treeNodeToString(replaceRoot));
+
+        TreeNode oneNode = root.getLeft().getRight();
+        List<Integer> pathRes = fc.searchNode(root, oneNode);
+        System.out.printf("从当前root节点%d 到 另一个节点%d的路径信息为", root.val, oneNode.val);
+        System.out.println(pathRes);
 
 
         /*

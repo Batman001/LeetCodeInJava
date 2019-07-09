@@ -263,6 +263,51 @@ public class FunctionTreeNode {
         return found;
     }
 
+
+    /**
+     * 非递归实现从根节点到某一节点的路径信息
+     * @param root 根节点
+     * @param node 某一节点
+     * @return 列表存储从根节点到某一节点的路径信息
+     */
+    public List<Integer> searchNode(TreeNode root, TreeNode node){
+        // TODO 目前存在空指针错误 未调好该bug
+        List<Integer> res = new ArrayList<>();
+        if(root == null || node == null) {
+            return res;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode p = root;
+        //上一次出栈的结点
+        TreeNode pre = null;
+        while(p != null || !stack.isEmpty()) {
+            while(p != null) {
+                stack.push(p);
+                //这个while循环的思想还是一直往左找，找的过程结点入栈，如果找到了就打印输出并返回。
+                if(p.val == node.val){
+                    for(TreeNode curNode : stack){
+                        res.add(curNode.val);
+                    }
+                    return res;
+                }
+                p = p.left;
+            }
+            //走到这一步说明栈顶元素的左子树为null，那么就开始往栈顶元素的右子树上去找。
+            if(!stack.isEmpty()) {
+                p = stack.peek();
+                //如果栈顶元素的右子树为null，或者右子树被遍历过，则弹栈。
+                while(p.right == null || pre != null && p.right == pre) {
+                    pre = stack.pop();
+                    p = stack.peek();
+                }
+                //继续遍历p的右子树
+                p = p.right;
+            }
+        }
+        return res;
+
+    }
+
     /**
      * 二叉树的层次遍历非递归
      *
@@ -330,7 +375,6 @@ public class FunctionTreeNode {
         ArrayList<TreeNode> path1 = new ArrayList<>();
         getPath(root, p, path1);
         path1.add(p);
-
         // 然后寻找根节点root到节点q的路径2
         ArrayList<TreeNode> path2 = new ArrayList<>();
         getPath(root, q, path2);
@@ -350,9 +394,9 @@ public class FunctionTreeNode {
     /**
      * 寻找二叉查找树的两个节点的最近公共祖先节点
      *
-     * @param root
-     * @param p
-     * @param q
+     * @param root binary search tree 根节点
+     * @param p TreeNode 二叉树某一节点p
+     * @param q TreeNode 二叉树某一节点q
      * @return
      */
     public TreeNode lowestCommonAncestorBSTTree(TreeNode root, TreeNode p, TreeNode q) {
