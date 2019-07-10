@@ -10,8 +10,7 @@ import org.jetbrains.annotations.Contract;
 public class MaxHeap {
     int[] heap;
     int heapSize;
-    public MaxHeap(int[] array)
-    {
+    public MaxHeap(int[] array) {
         this.heap=array;
         this.heapSize=heap.length;
     }
@@ -19,28 +18,24 @@ public class MaxHeap {
     /**
      * 根据提供的列表进行建堆的函数
      */
-    public void buildMaxHeap()
-    {
-        for(int i=heapSize / 2 - 1; i>=0; i--)
-        {
+    public void buildMaxHeap() {
+        for(int i=heapSize / 2 - 1; i>=0; i--) {
             //依次向上将当前子树最大堆化
-            maxify(i);
+            maximize(i);
         }
     }
 
     /**
      * 堆排列方法,动态调整堆的过程
      */
-    public void heapSort()
-    {
-        for(int i=0;i<heap.length;i++)
-        {
+    public void heapSort() {
+        for(int i=0;i<heap.length;i++) {
             //执行n次，将每个当前最大的值放到堆末尾
             int tmp=heap[0];
             heap[0]=heap[heapSize-1];
             heap[heapSize-1]=tmp;
             heapSize--;
-            maxify(0);
+            maximize(0);
         }
     }
 
@@ -48,8 +43,7 @@ public class MaxHeap {
      * 调整索引位置为i的堆得分布情况
      * @param i
      */
-    public void maxify(int i)
-    {
+    public void maximize(int i) {
         int l=left(i);
         int r=right(i);
         int largest;
@@ -74,10 +68,9 @@ public class MaxHeap {
         int tmp=heap[i];
         heap[i]=heap[largest];
         heap[largest]=tmp;
-        maxify(largest);
+        maximize(largest);
     }
-    public void increaseValue(int i,int val)
-    {
+    public void increaseValue(int i,int val) {
         heap[i]=val;
         if(i>=heapSize||i<=0||heap[i]>=val){
             return;
@@ -98,20 +91,17 @@ public class MaxHeap {
      * @return
      */
     @Contract(pure = true)
-    private int parent(int i)
-    {
+    private int parent(int i) {
         return (i-1)/2;
     }
 
     @Contract(pure = true)
-    private int left(int i)
-    {
+    private int left(int i) {
         return 2*(i+1)-1;
     }
 
     @Contract(pure = true)
-    private int right(int i)
-    {
+    private int right(int i) {
         return 2*(i+1);
     }
 }

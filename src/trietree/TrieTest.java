@@ -1,4 +1,4 @@
-package string.trietree;
+package trietree;
 
 import java.util.HashMap;
 
@@ -26,17 +26,17 @@ public class TrieTest {
         trie.insert("her");
         trie.insert("know");
 
-        HashMap<String,Integer> map=trie.getAllWords();
+        HashMap<String,Integer> map = trie.getAllWords();
 
         for(String key:map.keySet()){
             System.out.println(key+" 出现: "+ map.get(key)+"次");
         }
 
 
-        map=trie.getWordsForPrefix("chin");
+        map = trie.getWordsForPrefix("chin");
 
         System.out.println("\n\n包含chin（包括本身）前缀的单词及出现次数：");
-        for(String key:map.keySet()){
+        for(String key : map.keySet()){
             System.out.println(key+" 出现: "+ map.get(key)+"次");
         }
 
