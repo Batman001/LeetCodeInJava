@@ -9,7 +9,7 @@ import java.util.List;
  * @author Batman on 2018/12/19.
  * @author Batman
  */
-public class BinaryTree {
+public class BinaryTreeTest {
     public static void main(String[] args){
         TreeNode root = InitTree.init();
 
@@ -114,7 +114,7 @@ public class BinaryTree {
         fc.flattenNew(replaceRoot);
         System.out.println(fc.treeNodeToString(replaceRoot));
 
-        TreeNode oneNode = root.getLeft().getRight();
+        TreeNode oneNode = root.getRight().getRight().getRight();
         List<Integer> pathRes = fc.searchNode(root, oneNode);
         System.out.printf("从当前root节点%d 到 另一个节点%d的路径信息为", root.val, oneNode.val);
         System.out.println(pathRes);
