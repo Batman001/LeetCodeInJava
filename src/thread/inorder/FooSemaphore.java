@@ -1,8 +1,10 @@
-package thread;
+package thread.inorder;
 
 import java.util.concurrent.Semaphore;
 
 /**
+ * @leetcode 1114 按序打印
+ * 使用多线程工具 semaphore(信号量)
  * @author Batman create on 2019-09-09 19:30
  */
 public class FooSemaphore {

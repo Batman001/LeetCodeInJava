@@ -1,4 +1,4 @@
-package thread;
+package thread.inorder;
 
 /**
  * @author Batman create on 2019-09-09 17:06

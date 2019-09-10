@@ -1,6 +1,7 @@
-package thread;
+package thread.inorder;
 
 /**
+ * @leetcode 1114 按序打印
  * @author Batman create on 2019-09-09 17:30
  */
 public class FooLock {

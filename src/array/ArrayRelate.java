@@ -1,6 +1,8 @@
 package array;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Batman create on 2019-04-19 16:33
@@ -121,8 +123,7 @@ public class ArrayRelate {
         // from left to right
         int max = nums[0];
 
-        for(int i=0; i<n; i++)
-        {
+        for(int i=0; i<n; i++) {
             max = Math.max(max, nums[i]);
             min = Math.min(min, nums[n-1-i]);
 
@@ -160,6 +161,35 @@ public class ArrayRelate {
         }
         return Math.max(currentLen, maxValue);
 
+
+    }
+
+
+    /**
+     * leetcode 219 存在重复元素
+     * 给定一个整数数组和一个整数 k，判断数组中是否存在两个不同的索引 i 和 j，
+     * 使得 nums [i] = nums [j]，并且 i 和 j 的差的绝对值最大为 k。
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/contains-duplicate-ii
+     * @param nums 待检验的数组
+     * @param k 索引i与j的差值不会超过k
+     * @return
+     */
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        Map<Integer, Integer> map = new HashMap<>(16);
+
+        for(int i=0; i<nums.length; i++) {
+            if(! map.containsKey(nums[i])) {
+                map.put(nums[i], i);
+            } else {
+                int lastIndex = map.get(nums[i]);
+                if (Math.abs(lastIndex - i) <= k) {
+                    return true;
+                }
+                map.put(nums[i], i);
+            }
+        }
+        return false;
 
     }
 
