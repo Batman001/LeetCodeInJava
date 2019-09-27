@@ -1,6 +1,5 @@
 package heap;
 
-import org.jetbrains.annotations.Contract;
 
 /**
  * @author Batman
@@ -90,17 +89,14 @@ public class MaxHeap {
      * @param i
      * @return
      */
-    @Contract(pure = true)
     private int parent(int i) {
         return (i-1)/2;
     }
 
-    @Contract(pure = true)
     private int left(int i) {
         return 2*(i+1)-1;
     }
 
-    @Contract(pure = true)
     private int right(int i) {
         return 2*(i+1);
     }
