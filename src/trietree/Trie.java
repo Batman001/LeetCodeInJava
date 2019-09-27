@@ -23,7 +23,7 @@ public class Trie {
         /**
          * trie树子树 用数组实现
          */
-        private Node childs[];
+        private Node[] childs;
 
         /**
          * 是否为单词节点
