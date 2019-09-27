@@ -6,10 +6,10 @@ package heap;
  * @author Batman on 2018/12/19.
  * 大根堆的类
  */
-public class MaxHeap {
+class MaxHeap {
     int[] heap;
-    int heapSize;
-    public MaxHeap(int[] array) {
+    private int heapSize;
+    MaxHeap(int[] array) {
         this.heap=array;
         this.heapSize=heap.length;
     }
@@ -27,7 +27,7 @@ public class MaxHeap {
     /**
      * 堆排列方法,动态调整堆的过程
      */
-    public void heapSort() {
+    private void heapSort() {
         for(int i=0;i<heap.length;i++) {
             //执行n次，将每个当前最大的值放到堆末尾
             int tmp=heap[0];
@@ -42,7 +42,7 @@ public class MaxHeap {
      * 调整索引位置为i的堆得分布情况
      * @param i
      */
-    public void maximize(int i) {
+    private void maximize(int i) {
         int l=left(i);
         int r=right(i);
         int largest;
@@ -69,7 +69,7 @@ public class MaxHeap {
         heap[largest]=tmp;
         maximize(largest);
     }
-    public void increaseValue(int i,int val) {
+    private void increaseValue(int i,int val) {
         heap[i]=val;
         if(i>=heapSize||i<=0||heap[i]>=val){
             return;
