@@ -7,7 +7,7 @@ package com.leetcode.train.binarysearch;
 public class SearchInRotateArray {
 
     /**
-     * leetcode 153 数组无重复元素
+     * leetcode 153 数组无重复元素 https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/
      * 假设按照升序排序的数组在预先未知的某个点上进行了旋转
      * 示例: 输入: [3,4,5,1,2] 输出: 1
      * 示例: 输入: [4,5,6,7,0,1,2] 输出: 0
@@ -45,7 +45,7 @@ public class SearchInRotateArray {
 
 
     /**
-     * 二分查找元素法 leetcode 153 未包含重复元素
+     * 二分查找元素法 leetcode 153 未包含重复元素 https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/
      * @param nums 待查找数组
      * @return 数组中最小元素
      */

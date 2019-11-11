@@ -32,7 +32,7 @@ public class ArrayRelate {
 
     /**
      * @author Batman create on 2019-03-18 11:25
-     * Leetcode 27 Remove Element
+     * Leetcode 27 Remove Element https://leetcode-cn.com/problems/remove-element/
      * 给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。
      * 不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
      * 元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。
@@ -52,7 +52,7 @@ public class ArrayRelate {
     }
 
     /**
-     * Leetcode 33  搜索旋转排序数组
+     * Leetcode 33  搜索旋转排序数组 https://leetcode-cn.com/problems/search-in-rotated-sorted-array/
      * 假设按照升序排序的数组在预先未知的某个点上进行了旋转
      * 搜索一个给定的目标值，如果数组中存在这个目标值，则返回它的索引，否则返回 -1
      * @param nums int[]
@@ -140,7 +140,7 @@ public class ArrayRelate {
 
 
     /**
-     * LeetCode 674 最长连续递增序列
+     * LeetCode 674 最长连续递增序列 https://leetcode-cn.com/problems/longest-continuous-increasing-subsequence/
      * 给定一个未经排序的整数数组，找到最长且连续的的递增序列。
      * 使用动态规划进行求解
      * @param nums int[]
@@ -166,11 +166,10 @@ public class ArrayRelate {
 
 
     /**
-     * leetcode 219 存在重复元素
+     * leetcode 219 存在重复元素 https://leetcode-cn.com/problems/contains-duplicate-ii
      * 给定一个整数数组和一个整数 k，判断数组中是否存在两个不同的索引 i 和 j，
      * 使得 nums [i] = nums [j]，并且 i 和 j 的差的绝对值最大为 k。
      * 来源：力扣（LeetCode）
-     * 链接：https://leetcode-cn.com/problems/contains-duplicate-ii
      * @param nums 待检验的数组
      * @param k 索引i与j的差值不会超过k
      * @return

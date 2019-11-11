@@ -2,7 +2,7 @@ package com.leetcode.train.binarysearch;
 
 /**
  * @author Batman create on 2019-09-16 08:59
- * leetcode 162 寻找峰值
+ * leetcode 162 寻找峰值 https://leetcode-cn.com/problems/find-peak-element/
  * 峰值元素是指其值大于左右相邻值的元素。
  *
  * 给定一个输入数组 nums，其中 nums[i] ≠ nums[i+1]，找到峰值元素并返回其索引。
