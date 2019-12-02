@@ -13,10 +13,10 @@ public class FunctionTreeNode {
     /**
      * 求两个二叉树节点的最低公共祖先节点
      *
-     * @param root
-     * @param t1
-     * @param t2
-     * @return
+     * @param root 二叉树根节点
+     * @param t1 二叉树结点 t1
+     * @param t2 二叉树结点 t2
+     * @return 最低公共祖先结点
      */
     public TreeNode getLastCommonParent(TreeNode root, TreeNode t1, TreeNode t2) {
         if (findNode(root.getLeft(), t1)) {
@@ -37,9 +37,9 @@ public class FunctionTreeNode {
     /**
      * 查找节点node是否在当前 二叉树中
      *
-     * @param root
-     * @param node
-     * @return
+     * @param root 二叉树根节点
+     * @param node 待查找结点
+     * @return 在当前二叉树中 则返回True 否则返回False
      */
     public boolean findNode(TreeNode root, TreeNode node) {
         if (root == null || node == null) {
@@ -59,8 +59,8 @@ public class FunctionTreeNode {
     /**
      * Insert TreeNode Into 二叉排序树
      *
-     * @param root
-     * @param InsertNode
+     * @param root 待插入二叉排序树的根节点
+     * @param InsertNode 待插入二叉树节点
      */
     public void BSTInsert(TreeNode root, TreeNode InsertNode) {
         if (InsertNode.getVal() < root.getVal()) {
@@ -81,9 +81,9 @@ public class FunctionTreeNode {
     /**
      * 二叉查找树查找数值
      *
-     * @param root
-     * @param value
-     * @return
+     * @param root 二叉树根节点
+     * @param value 二叉树节点的value
+     * @return true or false
      */
     public boolean BSTSearch(TreeNode root, int value) {
         if (root.getVal() == value) {
@@ -106,10 +106,10 @@ public class FunctionTreeNode {
     }
 
     /**
-     * 计算二叉树的最深度
+     * 计算二叉树的最大深度
      *
      * @param root 二叉树的根节点
-     * @return
+     * @return 二叉树的最大深度
      */
     public int getMaxDepth(TreeNode root) {
         if (root == null) {
@@ -138,7 +138,7 @@ public class FunctionTreeNode {
 
     /**
      * 层次遍历二叉树(递归实现)
-     * @param root
+     * @param root 二叉树根节点
      */
     public void levelVisit(TreeNode root) {
         if (root == null) {
@@ -167,10 +167,9 @@ public class FunctionTreeNode {
     /**
      * 一颗二叉查找树,先进行前序遍历,然后将前序遍历结果依次插入到一棵新的二叉树中,将会的得到和原来一样的二叉查找树
      *
-     * @param root
-     * @param result
+     * @param root 二叉树根节点
+     * @param result 二叉树前序遍历 并保存至result中
      */
-
     public void preCollect(TreeNode root, ArrayList<TreeNode> result) {
         if (root == null) {
             return;
@@ -185,12 +184,12 @@ public class FunctionTreeNode {
     /**
      * 得到root根节点到某节点的路径信息
      *
-     * @param root
-     * @param node
-     * @param path
-     * @return
+     * @param root 二叉树根节点
+     * @param node 二叉树某节点
+     * @param path 根结点到node结点的路径存储
+     * @return true or false
      */
-    public boolean getNodePath(TreeNode root, TreeNode node, Stack<Integer> path) {
+    private boolean getNodePath(TreeNode root, TreeNode node, Stack<Integer> path) {
 
         if (root == node) {
             return true;
@@ -216,9 +215,9 @@ public class FunctionTreeNode {
     /**
      * 查看二叉树中是否有节点node
      *
-     * @param root
-     * @param node
-     * @return
+     * @param root 二叉树根节点
+     * @param node 二叉树某节点 node
+     * @return 返回该二叉树中是否包含节点node  如果包含返回true 反则返回false
      */
     public boolean hasNode(TreeNode root, TreeNode node) {
         if (root == null || node == null) {
@@ -237,10 +236,10 @@ public class FunctionTreeNode {
     /**
      * 得到根节点root到node节点的路径信息
      *
-     * @param root
-     * @param node
-     * @param path
-     * @return
+     * @param root 二叉树根节点root
+     * @param node 二叉树某节点node
+     * @param path 保存从根节点到某节点node的路径信息
+     * @return 如果得到该路径返回true 否则返回false
      */
     public boolean getPath(TreeNode root, TreeNode node, ArrayList<TreeNode> path) {
 
@@ -315,14 +314,14 @@ public class FunctionTreeNode {
      * @return
      */
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> list = new ArrayList<List<Integer>>();
+        List<List<Integer>> list = new ArrayList<>();
         if (root == null) {
             return list;
         }
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         while (queue.size() != 0) {
-            List<Integer> alist = new ArrayList<Integer>();
+            List<Integer> alist = new ArrayList<>();
             for (TreeNode child : queue) {
                 alist.add(child.getVal());
             }
@@ -348,7 +347,7 @@ public class FunctionTreeNode {
      * @param root 二叉树的跟节点
      * @param p    二叉树某一节点p
      * @param q    二叉树某一节点q
-     * @return
+     * @return 二叉树最近公共祖先节点
      */
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null || root == p || root == q) {
@@ -365,10 +364,10 @@ public class FunctionTreeNode {
     /**
      * 非递归方法实现寻找两个节点的最近公共祖先节点
      *
-     * @param root
-     * @param p
-     * @param q
-     * @return
+     * @param root 二叉树根节点
+     * @param p 求两个节点的最近公共祖先节点 的某节点p
+     * @param q 求两个节点的最近公共祖先节点 的某节点q
+     * @return 返回二叉树的两个节点的最近公共祖先节点
      */
     public TreeNode getLowerCommonAncestorNonRecursive(TreeNode root, TreeNode p, TreeNode q) {
         // 首先寻找根节点root到节点p的路径1
@@ -392,12 +391,12 @@ public class FunctionTreeNode {
     }
 
     /**
-     * 寻找二叉查找树的两个节点的最近公共祖先节点
+     * 递归算法实现寻找二叉查找树的两个节点的最近公共祖先节点
      *
      * @param root binary search tree 根节点
      * @param p TreeNode 二叉树某一节点p
      * @param q TreeNode 二叉树某一节点q
-     * @return
+     * @return  返回二叉树的两个节点的最近公共祖先节点
      */
     public TreeNode lowestCommonAncestorBSTTree(TreeNode root, TreeNode p, TreeNode q) {
         TreeNode node = root;
@@ -464,8 +463,8 @@ public class FunctionTreeNode {
     /**
      * 递归实现层次遍历二叉树
      *
-     * @param root
-     * @return
+     * @param root 二叉树根节点
+     * @return 层次遍历二叉树的结果 使用列表保存层次遍历的二叉树
      */
     public List<List<Integer>> levelOrderBottomNonRecursive(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
@@ -499,12 +498,12 @@ public class FunctionTreeNode {
     /**
      * Leetcode 112 Path Sum 判断从根节点到叶节点其路径之和是否可以得到
      *
-     * @param root
-     * @param sum
-     * @return
+     * @param root 根节点
+     * @param sum 从根节点到某叶子节点的路径之和 sum值
+     * @return 如果可以得到返回true 否则返回false
      */
-    public boolean hasPathSum(TreeNode root, int sum) {
-        return root == null ? false : checkPathSum(root, sum, 0);
+    private boolean hasPathSum(TreeNode root, int sum) {
+        return root != null && checkPathSum(root, sum, 0);
     }
 
     private boolean checkPathSum(TreeNode root, int sum, int brachSum) {
@@ -524,11 +523,12 @@ public class FunctionTreeNode {
 
 
     /**
-     * @param root
-     * @param sum
-     * @return
+     * Leetcode 112 Path Sum 判断从根节点到叶节点其路径之和是否可以得到
+     * @param root 根节点
+     * @param sum 从根节点到某叶子节点的路径之和 sum值
+     * @return 如果可以得到返回true 否则返回false
      */
-    public boolean hasPathSum2(TreeNode root, int sum) {
+    private boolean hasPathSum2(TreeNode root, int sum) {
         if(root == null){
             return false;
         }
@@ -549,7 +549,7 @@ public class FunctionTreeNode {
      * lastNode为空节点,用于对树进行连接
      */
     private TreeNode lastNode = null;
-    public void flatten (TreeNode root){
+    private void flatten(TreeNode root){
         if(root == null){
             return;
         }
@@ -567,7 +567,7 @@ public class FunctionTreeNode {
 
     /**
      * flattenNew 采用divide and conquer方法进行拉平
-     * @param root
+     * @param root 二叉树根节点
      */
     public void flattenNew(TreeNode root){
         helper(root);
@@ -607,7 +607,7 @@ public class FunctionTreeNode {
      * 根据Python的递归解法进行拉平 java实现
      * @param root
      */
-    public void flattenSecond(TreeNode root){
+    private void flattenSecond(TreeNode root){
         if(root == null){
             return ;
         }
@@ -631,25 +631,25 @@ public class FunctionTreeNode {
 
     /**
      * 将二叉树转换成字符串形式(其实为非递归层次遍历)
-     * @param root
-     * @return
+     * @param root 根节点root
+     * @return 二叉树转换成字符串形式
      */
     public String treeNodeToString(TreeNode root){
         if(root == null){
             return "[]";
         }
-        String output = "";
+        StringBuilder output = new StringBuilder();
         Queue<TreeNode> nodeQueue = new LinkedList<>();
         nodeQueue.add(root);
         while(!nodeQueue.isEmpty()){
             TreeNode node = nodeQueue.remove();
 
             if(node == null){
-                output += "null, ";
+                output.append("null, ");
                 continue;
             }
 
-            output += String.valueOf(node.val) + ", ";
+            output.append(node.val).append(", ");
             nodeQueue.add(node.left);
             nodeQueue.add(node.right);
         }
@@ -659,24 +659,24 @@ public class FunctionTreeNode {
 
     /**
      * 判断两个二叉树是不是完全相同
-     * @param p
-     * @param q
-     * @return
+     * @param p 二叉树某节点p
+     * @param q 二叉树某节点q
+     * @return 如果完全相同 返回true 否则 返回false
      */
-    public boolean isSameTree(TreeNode p, TreeNode q){
+    private boolean isSameTree(TreeNode p, TreeNode q){
         if(p!=null && q!=null && p.val == q.val){
             return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
         }
-        else if(p==null && q==null){
-            return true;
+        else {
+            return p == null && q == null;
         }
-        return false;
     }
 
     /**
-     * Leetcode 98 Validate Binary Search Tree
-     * @param root
-     * @return
+     * Leetcode 98 Validate Binary Search Tree 验证二叉搜索树
+     * https://leetcode-cn.com/problems/validate-binary-search-tree/
+     * @param root 二叉树根节点
+     * @return 如果是二叉搜索树 返回true 否则返回false
      */
     public boolean isValidBST(TreeNode root){
         List<Integer> list = new ArrayList<>();
@@ -702,19 +702,19 @@ public class FunctionTreeNode {
     /**
      * 反转二叉树
      */
-    public TreeNode invertTree(TreeNode root){
-       if(root != null){
-           TreeNode temp = root.left;
-           root.left = root.right;
-           root.right = temp;
-       }
+    private void invertTree(TreeNode root){
+        if(root == null) {
+            return;
+        }
+        TreeNode temp = root.left;
+        root.left = root.right;
+        root.right = temp;
         if(root.left != null){
             invertTree(root.left);
         }
         if(root.right != null){
             invertTree(root.right);
         }
-        return root;
     }
 
     /**
@@ -729,7 +729,7 @@ public class FunctionTreeNode {
      * @param t2 TreeNode t2
      * @return TreeNode
      */
-    public TreeNode mergeTrees(TreeNode t1, TreeNode t2){
+    private TreeNode mergeTrees(TreeNode t1, TreeNode t2){
         if(t1 == null){
             return t2;
         }
@@ -745,14 +745,15 @@ public class FunctionTreeNode {
     }
 
 
-    List<TreeNode> treeList = new ArrayList<>();
+    private List<TreeNode> treeList = new ArrayList<>();
 
     /**
-     * 538. Convert BST to Greater Tree
+     * 538. https://leetcode-cn.com/problems/convert-bst-to-greater-tree/
+     * 把二叉搜索树转换为累加树
      * 中序遍历到列表中
      * 自然的想到先用先序遍历把树转成数组，就得到了一个从小到大排序的数组，然后从后往前累加就可以了。
-     * @param root
-     * @return
+     * @param root 二叉树根节点
+     * @return 转换成累加树的根节点
      */
     public TreeNode convertBST(TreeNode root) {
         /*
@@ -787,22 +788,23 @@ public class FunctionTreeNode {
         }
     }
 
-
-    int sum=0;
+    private int sum=0;
 
     /**
      * 右根左 遍历顺序 然后进行累加即可
      * LeetCode 538 Convert BST to Greater Tree
-     * @param root
-     * @return
+     * @param root 二叉树根节点
+     * @return 返回累加树的根节点
      */
     public TreeNode convertBST2(TreeNode root) {
         convert(root);
         return root;
     }
 
-    public void convert(TreeNode cur) {
-        if (cur == null) return;
+    private void convert(TreeNode cur) {
+        if (cur == null) {
+            return;
+        }
         convert(cur.right);
         cur.val += sum;
         sum = cur.val;
@@ -810,16 +812,11 @@ public class FunctionTreeNode {
     }
 
     /**
-     * LeetCode 572 Subtree of Another Tree
-     * Given two non-empty binary trees s and t,
-     * check whether tree t has exactly the same structure
-     * and node values with a subtree of s.
-     * A subtree of s is a tree consists of a node in s
-     * and all of this node's descendants.
-     * The tree s could also be considered as a subtree of itself.
-     * @param s
-     * @param t
-     * @return
+     * LeetCode 572 另一个树的子树
+     * https://leetcode-cn.com/problems/subtree-of-another-tree/
+     * @param s 非空二叉树根节点s
+     * @param t 非空二叉树根节点t
+     * @return 如果t是s的子树 返回true 否则返回false
      */
     public boolean isSubtree(TreeNode s, TreeNode t){
         if(s == null){
@@ -832,16 +829,22 @@ public class FunctionTreeNode {
     }
 
     /**
-     * LeetCode Maximum Binary Tree
-     * The root is the maximum number in the com.leetcode.train.array.
-     * The left subtree is the maximum tree constructed from left part subarray divided by the maximum number.
-     * The right subtree is the maximum tree constructed from right part subarray divided by the maximum number.
+     * LeetCode 654 最大二叉树
+     * 给定一个不含重复元素的整数数组。一个以此数组构建的最大二叉树定义如下：
+     *
+     * 二叉树的根是数组中的最大元素。
+     * 左子树是通过数组中最大值左边部分构造出的最大二叉树。
+     * 右子树是通过数组中最大值右边部分构造出的最大二叉树。
+     * 通过给定的数组构建最大二叉树，并且输出这个树的根节点。
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/maximum-binary-tree
      * 思路:
      * 1. 创建一个根节点,其值为数组的最大值
      * 2. 创建根节点的左节点,左节点的值为数组左部分的最大值
      * 3. 创建根节点的有节点,右节点的值为数组有部分的最大值
-     * @param nums
-     * @return
+     * @param nums 待重建二叉树的数组
+     * @return 创建成功后的二叉树的根节点
      */
     public static TreeNode constructMaximumBinaryTree(int[] nums){
 
@@ -849,7 +852,7 @@ public class FunctionTreeNode {
 
     }
 
-    public static TreeNode constructor(int[] nums, int left, int right){
+    private static TreeNode constructor(int[] nums, int left, int right){
         if (left > right){
             return null;
         }
@@ -867,15 +870,13 @@ public class FunctionTreeNode {
      * @param right 目标数组的右边结束边界
      * @return 截取边界内的最大值的索引
      */
-    public static int maxArrayIndex(int[] nums, int left, int right){
+    private static int maxArrayIndex(int[] nums, int left, int right){
         int point = nums[left];
         int max_index = left;
         for(int i=left+1; i<=right; i++){
             if (nums[i] > point){
                 max_index = i;
                 point = nums[i];
-            }else{
-                continue;
             }
         }
         return max_index;

@@ -10,12 +10,10 @@ import java.util.Deque;
  */
 public class VisitFunction {
 
-    /**
-     * 递归遍历二叉树
-     */
+    /* 递归遍历二叉树 */
     /**
      * 递归前序遍历
-     * @param root
+     * @param root 二叉树根节点
      */
     public void preVisit(MyNode root){
         if (root == null){
@@ -29,7 +27,7 @@ public class VisitFunction {
 
     /**
      * 递归中序遍历
-     * @param root
+     * @param root 二叉树根节点
      */
     public void middleVisit(MyNode root){
         if(root == null){
@@ -43,7 +41,7 @@ public class VisitFunction {
 
     /**
      * 递归后序遍历
-     * @param root
+     * @param root 二叉树根节点
      */
     public void postVisit(MyNode root){
         if(root == null){
@@ -57,14 +55,14 @@ public class VisitFunction {
 
     /**
      * 递归层次遍历
-     * @param root
+     * @param root 二叉樹根节点
      */
     public void levelVisit(MyNode root){
         if (root == null){
             return;
         }
-        int TreeDepth = getMaxDepth(root);
-        for(int i=1; i<=TreeDepth; i++){
+        int treeDepth = getMaxDepth(root);
+        for(int i=1; i<=treeDepth; i++){
             visitLevel(root, i);
         }
     }
@@ -91,7 +89,7 @@ public class VisitFunction {
 
     /**
      * 非递归实现二叉树先序遍历
-     * @param root
+     * @param root 二叉树根节点
      */
 
     public void preVisit_(MyNode root){
@@ -113,7 +111,7 @@ public class VisitFunction {
 
     /**
      * 非递归实现二叉树中序遍历
-     * @param root
+     * @param root 二叉树根节点
      */
 
     public void middleVisit_(MyNode root){
@@ -134,7 +132,7 @@ public class VisitFunction {
 
     /**
      * 非递归实现二叉树后序遍历
-     * @param root
+     * @param root 二叉树根节点
      */
     public void postVisit_(MyNode root){
         Deque<MyNode> deque = new ArrayDeque<>();
@@ -144,7 +142,6 @@ public class VisitFunction {
         deque_存放每次push进栈的节点
         然后让deque_全部弹栈即为后序遍历过程
          */
-
 
         while(root != null || deque.size() > 0){
             while(root != null){
@@ -160,9 +157,7 @@ public class VisitFunction {
         }
 
 
-        /*
-        将deque_全部元素进行弹栈操作
-         */
+        /* 将deque_全部元素进行弹栈操作 */
         while(deque_.size() > 0){
             root = deque_.pop();
             root.visit();

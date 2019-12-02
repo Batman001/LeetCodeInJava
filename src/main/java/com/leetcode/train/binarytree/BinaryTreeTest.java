@@ -108,11 +108,10 @@ public class BinaryTreeTest {
 
         System.out.println("对二叉树进行拉平");
 
-        TreeNode replaceRoot = root;
-//        fc.flattenSecond(replaceRoot);
+        //        fc.flattenSecond(replaceRoot);
 //        fc.flatten(replaceRoot);
-        fc.flattenNew(replaceRoot);
-        System.out.println(fc.treeNodeToString(replaceRoot));
+        fc.flattenNew(root);
+        System.out.println(fc.treeNodeToString(root));
 
         TreeNode oneNode = root.getRight().getRight().getRight();
         List<Integer> pathRes = fc.searchNode(root, oneNode);
