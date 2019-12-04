@@ -12,6 +12,13 @@ public class FunctionTreeNode {
 
     /**
      * 求两个二叉树节点的最低公共祖先节点
+     * leetcode 238
+     * 给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
+     *
+     * 百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree
      *
      * @param root 二叉树根节点
      * @param t1 二叉树结点 t1
@@ -19,17 +26,17 @@ public class FunctionTreeNode {
      * @return 最低公共祖先结点
      */
     public TreeNode getLastCommonParent(TreeNode root, TreeNode t1, TreeNode t2) {
-        if (findNode(root.getLeft(), t1)) {
-            if (findNode(root.getRight(), t2)) {
+        if (findNode(root.left, t1)) {
+            if (findNode(root.right, t2)) {
                 return root;
             } else {
-                return getLastCommonParent(root.getLeft(), t1, t2);
+                return getLastCommonParent(root.left, t1, t2);
             }
         } else {
-            if (findNode(root.getLeft(), t2)) {
+            if (findNode(root.left, t2)) {
                 return root;
             } else {
-                return getLastCommonParent(root.getRight(), t1, t2);
+                return getLastCommonParent(root.right, t1, t2);
             }
         }
     }
@@ -42,15 +49,19 @@ public class FunctionTreeNode {
      * @return 在当前二叉树中 则返回True 否则返回False
      */
     public boolean findNode(TreeNode root, TreeNode node) {
+
         if (root == null || node == null) {
             return false;
         }
         if (root == node) {
             return true;
         }
-        boolean found = findNode(root.getLeft(), node);
-        if (!found) {
-            found = findNode(root.getRight(), node);
+        boolean found = false;
+        if(root.left != null) {
+            found = findNode(root.left, node);
+        }
+        if (!found && root.right != null) {
+            found = findNode(root.right, node);
         }
         return found;
     }
@@ -63,15 +74,15 @@ public class FunctionTreeNode {
      * @param InsertNode 待插入二叉树节点
      */
     public void BSTInsert(TreeNode root, TreeNode InsertNode) {
-        if (InsertNode.getVal() < root.getVal()) {
-            if (root.getLeft() != null) {
-                BSTInsert(root.getLeft(), InsertNode);
+        if (InsertNode.val < root.val) {
+            if (root.left != null) {
+                BSTInsert(root.left, InsertNode);
             } else {
                 root.setLeftTreeNode(InsertNode);
             }
         } else {
-            if (root.getRight() != null) {
-                BSTInsert(root.getRight(), InsertNode);
+            if (root.right != null) {
+                BSTInsert(root.right, InsertNode);
             } else {
                 root.setRightTreeNode(InsertNode);
             }
@@ -80,25 +91,24 @@ public class FunctionTreeNode {
 
     /**
      * 二叉查找树查找数值
-     *
      * @param root 二叉树根节点
      * @param value 二叉树节点的value
      * @return true or false
      */
     public boolean BSTSearch(TreeNode root, int value) {
-        if (root.getVal() == value) {
+        if (root.val == value) {
             return true;
         }
 
-        if (root.getVal() > value) {
-            if (root.getLeft() != null) {
-                return BSTSearch(root.getLeft(), value);
+        if (root.val > value) {
+            if (root.left != null) {
+                return BSTSearch(root.left, value);
             } else {
                 return false;
             }
         } else {
-            if (root.getRight() != null) {
-                return BSTSearch(root.getRight(), value);
+            if (root.right != null) {
+                return BSTSearch(root.right, value);
             } else {
                 return false;
             }
@@ -115,8 +125,8 @@ public class FunctionTreeNode {
         if (root == null) {
             return 0;
         }
-        int leftDepth = getMaxDepth(root.getLeft());
-        int rightDepth = getMaxDepth(root.getRight());
+        int leftDepth = getMaxDepth(root.left);
+        int rightDepth = getMaxDepth(root.right);
         return Math.max(leftDepth, rightDepth) + 1;
 
     }
@@ -129,8 +139,8 @@ public class FunctionTreeNode {
         if (root == null) {
             return 0;
         }
-        int leftDepth = getMinDepth(root.getLeft());
-        int rightDepth = getMaxDepth(root.getRight());
+        int leftDepth = getMinDepth(root.left);
+        int rightDepth = getMaxDepth(root.right);
         return (leftDepth == 0 || rightDepth == 0) ? leftDepth + rightDepth + 1
                 : Math.min(leftDepth, rightDepth) + 1;
 
@@ -159,8 +169,8 @@ public class FunctionTreeNode {
             return;
         }
 
-        visitLevel(root.getLeft(), level - 1);
-        visitLevel(root.getRight(), level - 1);
+        visitLevel(root.left, level - 1);
+        visitLevel(root.right, level - 1);
     }
 
 
@@ -175,8 +185,8 @@ public class FunctionTreeNode {
             return;
         }
         result.add(root);
-        preCollect(root.getLeft(), result);
-        preCollect(root.getRight(), result);
+        preCollect(root.left, result);
+        preCollect(root.right, result);
 
     }
 
@@ -194,16 +204,16 @@ public class FunctionTreeNode {
         if (root == node) {
             return true;
         }
-        path.push(root.getVal());
+        path.push(root.val);
 
         boolean found = false;
 
-        if (root.getLeft() != null) {
-            found = getNodePath(root.getLeft(), node, path);
+        if (root.left != null) {
+            found = getNodePath(root.left, node, path);
         }
 
-        if (!found && root.getRight() != null) {
-            found = getNodePath(root.getRight(), node, path);
+        if (!found && root.right != null) {
+            found = getNodePath(root.right, node, path);
         }
         if (!found) {
             path.pop();
@@ -226,9 +236,9 @@ public class FunctionTreeNode {
         if (root == node) {
             return true;
         }
-        boolean found = hasNode(root.getLeft(), node);
+        boolean found = hasNode(root.left, node);
         if (!found) {
-            found = hasNode(root.getRight(), node);
+            found = hasNode(root.right, node);
         }
         return found;
     }
@@ -249,12 +259,12 @@ public class FunctionTreeNode {
         path.add(root);
 
         boolean found = false;
-        if (root.getLeft() != null) {
-            found = getPath(root.getLeft(), node, path);
+        if (root.left != null) {
+            found = getPath(root.left, node, path);
         }
 
-        if (!found && root.getRight() != null) {
-            found = getPath(root.getRight(), node, path);
+        if (!found && root.right != null) {
+            found = getPath(root.right, node, path);
         }
         if (!found) {
             path.remove(path.size() - 1);
@@ -310,8 +320,8 @@ public class FunctionTreeNode {
     /**
      * 二叉树的层次遍历非递归
      *
-     * @param root
-     * @return
+     * @param root 二叉树根节点
+     * @return 返回二叉树层次遍历的结果
      */
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> list = new ArrayList<>();
@@ -321,19 +331,19 @@ public class FunctionTreeNode {
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         while (queue.size() != 0) {
-            List<Integer> alist = new ArrayList<>();
+            List<Integer> aList = new ArrayList<>();
             for (TreeNode child : queue) {
-                alist.add(child.getVal());
+                aList.add(child.val);
             }
-            list.add(new ArrayList<Integer>(alist));
+            list.add(new ArrayList<Integer>(aList));
             Queue<TreeNode> queue2 = queue;
-            queue = new LinkedList<TreeNode>();
+            queue = new LinkedList<>();
             for (TreeNode child : queue2) {
-                if (child.getLeft() != null) {
-                    queue.add(child.getLeft());
+                if (child.left != null) {
+                    queue.add(child.left);
                 }
-                if (child.getRight() != null) {
-                    queue.add(child.getRight());
+                if (child.right != null) {
+                    queue.add(child.right);
                 }
             }
         }
@@ -353,8 +363,8 @@ public class FunctionTreeNode {
         if (root == null || root == p || root == q) {
             return root;
         }
-        TreeNode left = lowestCommonAncestor(root.getLeft(), p, q);
-        TreeNode right = lowestCommonAncestor(root.getRight(), p, q);
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
         if (left != null && right != null) {
             return root;
         }
@@ -542,10 +552,7 @@ public class FunctionTreeNode {
 
     /**
      * Leetcode 114 Flatten Binary Tree to Linked List
-     * @param root
-     */
-
-    /**
+     * @param root 二叉树根节点
      * lastNode为空节点,用于对树进行连接
      */
     private TreeNode lastNode = null;
@@ -605,7 +612,7 @@ public class FunctionTreeNode {
 
     /**
      * 根据Python的递归解法进行拉平 java实现
-     * @param root
+     * @param root 二叉树根节点
      */
     private void flattenSecond(TreeNode root){
         if(root == null){
@@ -654,6 +661,56 @@ public class FunctionTreeNode {
             nodeQueue.add(node.right);
         }
         return "[" + output.substring(0, output.length()-2) + "]";
+
+    }
+
+
+    /**
+     * 根据字符串重建二叉树
+     * @param input 输入字符串
+     * @return 重建后的二叉树
+     */
+    public TreeNode stringToTreeNode(String input) {
+        input = input.trim();
+        input = input.substring(1, input.length() - 1);
+        if(input.length() == 0) {
+            return null;
+        }
+
+        String[] parts = input.split(",");
+        String item = parts[0];
+        TreeNode root = new TreeNode(Integer.parseInt(item));
+        Queue<TreeNode> nodeQueue = new LinkedList<>();
+        nodeQueue.add(root);
+
+        int index = 1;
+        while(!nodeQueue.isEmpty()) {
+            TreeNode node = nodeQueue.remove();
+            if(index == parts.length) {
+                break;
+            }
+
+            item = parts[index++].trim();
+            if(!"null".equals(item)) {
+                int leftNumber = Integer.parseInt(item);
+                node.left = new TreeNode(leftNumber);
+                nodeQueue.add(node.left);
+            }
+
+            if(index == parts.length) {
+                break;
+            }
+
+            item = parts[index++].trim();
+            if(!"null".equals(item)) {
+                int rightNumber = Integer.parseInt(item);
+                node.right = new TreeNode(rightNumber);
+                nodeQueue.add(node.right);
+            }
+
+        }
+        return root;
+
 
     }
 
@@ -762,7 +819,7 @@ public class FunctionTreeNode {
         if(root == null || root.left == null && root.right == null){
             return root;
         }
-        inorder(root);
+        inOrder(root);
 
 
         int len = treeList.size();
@@ -778,13 +835,13 @@ public class FunctionTreeNode {
         return root;
 
     }
-    private void inorder(TreeNode root){
+    private void inOrder(TreeNode root){
         if(root.left != null){
-            inorder(root.left);
+            inOrder(root.left);
         }
         treeList.add(root);
         if(root.right != null){
-            inorder(root.right);
+            inOrder(root.right);
         }
     }
 
