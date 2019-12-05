@@ -48,7 +48,7 @@ public class FunctionTreeNode {
      * @param node 待查找结点
      * @return 在当前二叉树中 则返回True 否则返回False
      */
-    public boolean findNode(TreeNode root, TreeNode node) {
+    private boolean findNode(TreeNode root, TreeNode node) {
 
         if (root == null || node == null) {
             return false;
@@ -95,7 +95,7 @@ public class FunctionTreeNode {
      * @param value 二叉树节点的value
      * @return true or false
      */
-    public boolean BSTSearch(TreeNode root, int value) {
+    private boolean BSTSearch(TreeNode root, int value) {
         if (root.val == value) {
             return true;
         }
@@ -319,9 +319,10 @@ public class FunctionTreeNode {
 
     /**
      * 二叉树的层次遍历非递归
-     *
+     * leetcode 102
+     * https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
      * @param root 二叉树根节点
-     * @return 返回二叉树层次遍历的结果
+     * @return 返回二叉树的层次遍历的结果
      */
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> list = new ArrayList<>();
@@ -335,12 +336,14 @@ public class FunctionTreeNode {
             for (TreeNode child : queue) {
                 aList.add(child.val);
             }
-            list.add(new ArrayList<Integer>(aList));
-            Queue<TreeNode> queue2 = queue;
-            queue = new LinkedList<>();
-            for (TreeNode child : queue2) {
+            list.add(new ArrayList<>(aList));
+            // 引入临时Queue 用于记录下一层的节点信息
+            Queue<TreeNode> tempQueue = queue;
+            // 遍历完一层的节点后 将queue置空
+            queue = new LinkedList<TreeNode>();
+            for (TreeNode child : tempQueue) {
                 if (child.left != null) {
-                    queue.add(child.left);
+                    queue.add(child.getLeft());
                 }
                 if (child.right != null) {
                     queue.add(child.right);
@@ -349,6 +352,32 @@ public class FunctionTreeNode {
         }
         return list;
     }
+
+
+
+    public List<List<Integer>> level_Order(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if(root == null) {
+            return null;
+        }
+
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+
+        while(!queue.isEmpty()) {
+            List<TreeNode> curLevelNodes = new ArrayList<>();
+            List<Integer> temp = new ArrayList<>();
+            for(TreeNode node : queue) {
+                temp.add(node.val);
+            }
+            res.add(new ArrayList<>(temp));
+
+
+        }
+
+        return res;
+    }
+
 
 
     /**
@@ -426,6 +455,9 @@ public class FunctionTreeNode {
 
     /**
      * Leetcode 107 Binary Tree Level Order Traversal II
+     * 二叉树的层次遍历 II
+     * 给定一个二叉树，返回其节点值自底向上的层次遍历。 （即按从叶子节点所在层到根节点所在的层，逐层从左向右遍历）
+     * https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii/
      * create at 2018.12.21 Batman
      */
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
@@ -472,7 +504,8 @@ public class FunctionTreeNode {
 
     /**
      * 递归实现层次遍历二叉树
-     *
+     * leetcode 107 二叉树的层次遍历 II
+     * https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii/
      * @param root 二叉树根节点
      * @return 层次遍历二叉树的结果 使用列表保存层次遍历的二叉树
      */
@@ -875,7 +908,7 @@ public class FunctionTreeNode {
      * @param t 非空二叉树根节点t
      * @return 如果t是s的子树 返回true 否则返回false
      */
-    public boolean isSubtree(TreeNode s, TreeNode t){
+    private boolean isSubtree(TreeNode s, TreeNode t){
         if(s == null){
             return false;
         }
@@ -929,14 +962,14 @@ public class FunctionTreeNode {
      */
     private static int maxArrayIndex(int[] nums, int left, int right){
         int point = nums[left];
-        int max_index = left;
+        int maxIndex = left;
         for(int i=left+1; i<=right; i++){
             if (nums[i] > point){
-                max_index = i;
+                maxIndex = i;
                 point = nums[i];
             }
         }
-        return max_index;
+        return maxIndex;
     }
 
 
