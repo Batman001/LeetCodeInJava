@@ -56,11 +56,9 @@ public class FunctionTreeNode {
         if (root == node) {
             return true;
         }
-        boolean found = false;
-        if(root.left != null) {
-            found = findNode(root.left, node);
-        }
-        if (!found && root.right != null) {
+        boolean found = findNode(root.left, node);
+
+        if (!found) {
             found = findNode(root.right, node);
         }
         return found;
@@ -790,7 +788,8 @@ public class FunctionTreeNode {
     }
 
     /**
-     * 反转二叉树
+     * 翻转二叉树
+     * @param root 二叉树根节点
      */
     private void invertTree(TreeNode root){
         if(root == null) {
@@ -805,6 +804,29 @@ public class FunctionTreeNode {
         if(root.right != null){
             invertTree(root.right);
         }
+    }
+
+    /**
+     * 翻转二叉树
+     * @param root 二叉树根节点
+     * @return 返回已经翻转后的二叉树
+     * leetcode 226 https://leetcode-cn.com/problems/invert-binary-tree/
+     */
+    private TreeNode invertTree_(TreeNode root) {
+        if(root == null) {
+            return null;
+        }
+        // 先保存原始右子树
+        TreeNode right = root.right;
+
+        // 翻转左子树 并赋值给root.right
+        root.right = invertTree_(root.left);
+
+        // 翻转预先保存的右子树 并赋值与左子树
+        root.left = invertTree_(right);
+
+        // 返回翻转后的二叉树根节点
+        return root;
     }
 
     /**
