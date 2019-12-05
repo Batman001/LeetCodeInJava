@@ -1034,4 +1034,63 @@ public class FunctionTreeNode {
         return res;
     }
 
+    /**
+     * 二叉树前序递归遍历
+     * @param root 二叉树根节点
+     * @return 返回遍历的节点value值
+     */
+    private List<Integer> preOrderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        preCollectVal(root, res);
+        return res;
+    }
+    private void preCollectVal(TreeNode root, List<Integer> res) {
+        if(root == null) {
+            return ;
+        }
+        res.add(root.val);
+        preCollectVal(root.left, res);
+        preCollectVal(root.right, res);
+    }
+
+    /**
+     * 二叉树中序遍历
+     * @param root 二叉树根节点
+     * @return 返回中序遍历遍历的二叉树val列表
+     */
+    private List<Integer> middleOrderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        middleCollectVal(root, res);
+        return res;
+    }
+    private void middleCollectVal(TreeNode root, List<Integer> res) {
+        if(root == null) {
+            return ;
+        }
+        middleCollectVal(root.left, res);
+        res.add(root.val);
+        middleCollectVal(root.right, res);
+    }
+
+    /**
+     * 二叉树后序遍历
+     * @param root 二叉树根节点
+     * @return 返回二叉树后序遍历的节点value值列表
+     */
+    private List<Integer> postOrderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        postCollectVal(root, res);
+        return res;
+    }
+
+    private void postCollectVal(TreeNode root, List<Integer> res) {
+        if(root == null) {
+            return ;
+        }
+        postCollectVal(root.left, res);
+        postCollectVal(root.right, res);
+        res.add(root.val);
+    }
+
+
 }

@@ -12,7 +12,7 @@ public class BuildTree {
      * 根据二叉树的前序遍历和中序遍历 重建该二叉树
      * @param preorder 前序遍历数组
      * @param inorder  中序遍历数组
-     * @return
+     * @return 重建二叉树的根节点
      */
     public TreeNode buildTree(int[] preorder, int[] inorder){
         if(preorder==null || inorder==null || preorder.length!=inorder.length || preorder.length==0){

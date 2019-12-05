@@ -12,19 +12,19 @@ public class FunctionNode {
 
     /**
      * 计算第K层节点的数量
-     * @param mynode
-     * @param k
-     * @return
+     * @param myNode 二叉树根节点
+     * @param k 第k层
+     * @return 返回第k层节点的数量
      */
-    public int numOfKLevelNode(MyNode mynode, int k) {
-        if (mynode == null || k < 1) {
+    private int numOfKLevelNode(MyNode myNode, int k) {
+        if (myNode == null || k < 1) {
             return 0;
         }
         if (k == 1) {
             return 1;
         }
-        int numLeft = numOfKLevelNode(mynode.getLeft(), k - 1);
-        int numRight = numOfKLevelNode(mynode.getRight(), k - 1);
+        int numLeft = numOfKLevelNode(myNode.getLeft(), k - 1);
+        int numRight = numOfKLevelNode(myNode.getRight(), k - 1);
         return numLeft + numRight;
 
     }
