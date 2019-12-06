@@ -2,7 +2,6 @@ package com.leetcode.train.heap;
 
 
 /**
- * @author Batman
  * @author Batman on 2018/12/19.
  * 大根堆的类
  */
@@ -17,7 +16,7 @@ class MaxHeap {
     /**
      * 根据提供的列表进行建堆的函数
      */
-    public void buildMaxHeap() {
+    void buildMaxHeap() {
         for(int i=heapSize / 2 - 1; i>=0; i--) {
             //依次向上将当前子树最大堆化
             maximize(i);
@@ -27,7 +26,7 @@ class MaxHeap {
     /**
      * 堆排列方法,动态调整堆的过程
      */
-    protected void heapSort() {
+    void heapSort() {
         for(int i=0;i<heap.length;i++) {
             //执行n次，将每个当前最大的值放到堆末尾
             int tmp=heap[0];
@@ -40,7 +39,7 @@ class MaxHeap {
 
     /**
      * 调整索引位置为i的堆得分布情况
-     * @param i
+     * @param i 需要调整位置的索引i
      */
     private void maximize(int i) {
         int l=left(i);
@@ -85,18 +84,28 @@ class MaxHeap {
     }
 
     /**
-     * i位置的索引从零开始计数
-     * @param i
-     * @return
+     * i位置的索引从零开始计数 返回索引为i的时候 父节点的索引
+     * @param i 位置索引
+     * @return 返回父节点的索引
      */
     private int parent(int i) {
         return (i-1)/2;
     }
 
+    /**
+     * 索引为i位置的左子树的索引
+     * @param i 位置索引i
+     * @return 返回左子树的索引
+     */
     private int left(int i) {
         return 2*(i+1)-1;
     }
 
+    /**
+     * 索引为i位置的右子树的索引
+     * @param i 位置索引i
+     * @return 返回右子树的索引
+     */
     private int right(int i) {
         return 2*(i+1);
     }

@@ -24,8 +24,7 @@ public class MaxHeapSortDemo {
      * 将数组按照建立完全二叉树的形式进行打印
      * @param array 输入数组
      */
-    private static void printHeapTree(int[] array)
-    {
+    private static void printHeapTree(int[] array) {
         for(int i=1; i<array.length; i=i*2)
         {
             for(int k = i-1; k < 2 * i - 1 && k < array.length; k++)
@@ -40,8 +39,7 @@ public class MaxHeapSortDemo {
      * 打印数组
      * @param array 输入数组
      */
-    private static void printHeap(int[] array)
-    {
+    private static void printHeap(int[] array) {
         for(int i=0;i<array.length;i++)
         {
             System.out.print(array[i]+" ");

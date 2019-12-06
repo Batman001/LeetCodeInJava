@@ -4,7 +4,6 @@ import java.util.List;
 
 /**
  * @author Batman on 2018/12/19.
- * @author Batman
  * 基础的堆排序抽象类
  * @param <E>
  */
@@ -12,11 +11,11 @@ import java.util.List;
 public abstract class BaseHeapSort<E> {
     /**
      * value1小于value2则返回true
-     * @param value1
-     * @param value2
+     * @param value1 数值1
+     * @param value2 数值2
      * @return
      */
-    protected abstract boolean compare(E value1, E value2);
+    abstract boolean compare(E value1, E value2);
 
     public boolean heapSort(List<E> list){//排序
         return heapSort(list, list.size());
@@ -39,11 +38,11 @@ public abstract class BaseHeapSort<E> {
 
     /**
      * 建立堆的过程
-     * @param list
-     * @param length
-     * @return
+     * @param list 建堆list
+     * @param length 建立堆的大小
+     * @return 如果创建完成返回true 否则返回false
      */
-    public boolean heapCreate(List<E> list, int length){ //创建小根堆
+    private boolean heapCreate(List<E> list, int length){ //创建小根堆
         if(null == list || 0 == list.size()){
             return false;
         }
@@ -58,10 +57,10 @@ public abstract class BaseHeapSort<E> {
 
     /**
      * 调整堆，使其满足小根堆的条件
-     * @param list
-     * @param middle
-     * @param length
-     * @return
+     * @param list 保存堆数据的列表
+     * @param middle 待调整列表的索引
+     * @param length 列表的长度
+     * @return 返回是否调整完成
      */
     private boolean heapAdjust(List<E> list, int middle, int length){
         if(null == list || 0 == list.size()){
@@ -84,11 +83,11 @@ public abstract class BaseHeapSort<E> {
 
     /**
      * 数据交换 交换列表中索引为i和j位置的值
-     * @param list
-     * @param i
-     * @param j
+     * @param list 需要进行调整的列表
+     * @param i 列表索引位置i
+     * @param j 列表索引位置j
      */
-    public void swap(List<E> list, int i, int j){
+    private void swap(List<E> list, int i, int j){
         E temp = list.get(i);
         list.set(i, list.get(j));
         list.set(j, temp);

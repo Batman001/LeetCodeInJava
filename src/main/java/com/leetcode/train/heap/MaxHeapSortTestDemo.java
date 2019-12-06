@@ -15,7 +15,7 @@ public class MaxHeapSortTestDemo {
 
     /**
      * 打印数组中的元素
-     * @param array
+     * @param array 待打印的数组array
      */
     private static void printHeap(int[] array) {
         for(int i=0;i<array.length;i++){
