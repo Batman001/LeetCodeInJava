@@ -277,7 +277,7 @@ public class FunctionTreeNode {
      * @param node 某一节点
      * @return 列表存储从根节点到某一节点的路径信息
      */
-    public List<Integer> searchNode(TreeNode root, TreeNode node){
+    public List<Integer> searchNodePath(TreeNode root, TreeNode node){
         // TODO 目前存在空指针错误 未调好该bug
         List<Integer> res = new ArrayList<>();
         if(root == null || node == null) {
@@ -1090,6 +1090,65 @@ public class FunctionTreeNode {
         postCollectVal(root.left, res);
         postCollectVal(root.right, res);
         res.add(root.val);
+    }
+
+
+    /**
+     * leetcode 129 求根到叶子节点数字之和
+     * https://leetcode-cn.com/problems/sum-root-to-leaf-numbers/submissions/
+     * @param root 二叉树根节点root
+     * @return 返回求和结果
+     */
+    private int sumNumbers(TreeNode root) {
+        // 对于二叉树数字进行求和 从0开始计算
+        return sumNumbersHelper(root, 0);
+    }
+
+    /**
+     * 计算二叉树从根节点到叶子节点的求和值
+     * @param root 二叉树根节点
+     * @param sum 开始计算求和的初始值
+     * @return 返回从初始值sum开始计算求和的最终结果
+     */
+    private int sumNumbersHelper(TreeNode root, int sum) {
+        if(root == null) {
+            return 0;
+        }
+        sum *= 10;
+        sum += root.val;
+        if(root.left == null && root.right == null) {
+            return sum;
+        }
+        return sumNumbersHelper(root.left, sum) + sumNumbersHelper(root.right, sum);
+
+    }
+
+
+    /**
+     * 从根节点到某一节点的路径信息
+     * @param root 二叉树根节点
+     * @param target 二叉树某一节点的val
+     * @return 返回从根节点到某一个节点的路径信息
+     */
+    public List<Integer> findPath(TreeNode root, int target){
+        List<Integer> res = new ArrayList<>();
+        findPathCollect(root, target, res);
+        return res;
+    }
+
+    private void findPathCollect(TreeNode root, int target, List<Integer> path) {
+        if(root == null) {
+            return ;
+        }
+        path.add(root.val);
+        if(root.val == target) {
+            return ;
+        }
+        findPathCollect(root.left, target, path);
+        path.remove(path.size() -  1);
+        findPathCollect(root.right, target, path);
+
+
     }
 
 

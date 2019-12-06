@@ -1,6 +1,7 @@
 package com.leetcode.train.binarytree;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Batman create on 2019-04-17 17:34
@@ -8,12 +9,12 @@ import java.util.ArrayList;
  */
 public class BinaryTreePathSum {
     /** 满足路径之和为sum的路径存储 */
-    private ArrayList<ArrayList<Integer>> sumPaths = new ArrayList<>();
+    private List<List<Integer>> sumPaths = new ArrayList<>();
 
     /** 一条路径信息存储 */
-    private ArrayList<Integer> onePath = new ArrayList<>();
+    private List<Integer> onePath = new ArrayList<>();
 
-    private ArrayList<ArrayList<Integer>> pathSum(TreeNode root, int sum){
+    private List<List<Integer>> pathSum(TreeNode root, int sum){
         if(null == root){
             return sumPaths;
         }
@@ -25,6 +26,7 @@ public class BinaryTreePathSum {
         // 递归遍历根节点的左右子树
         pathSum(root.left, sum);
         pathSum(root.right, sum);
+        // 比如树的结构是[1,2,3] 此时onePath存储信息为[1,2],为了获取[1,3]的路径信息 需要删除2节点
         onePath.remove(onePath.size() -1);
         return sumPaths;
     }

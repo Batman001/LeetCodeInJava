@@ -114,7 +114,7 @@ public class BinaryTreeTest {
         System.out.println(fc.treeNodeToString(root));
 
         TreeNode oneNode = root.getRight().getRight().getRight();
-        List<Integer> pathRes = fc.searchNode(root, oneNode);
+        List<Integer> pathRes = fc.searchNodePath(root, oneNode);
         System.out.printf("从当前root节点%d 到 另一个节点%d的路径信息为", root.val, oneNode.val);
         System.out.println(pathRes);
 

@@ -1,6 +1,7 @@
 package com.leetcode.train.binarytree;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Batman create on 2019-04-16 14:48
@@ -14,15 +15,15 @@ public class BinaryTreeSumNumbers {
      * @return 从根节点到叶子节点的数字之和
      */
     private int sumNumbers(TreeNode root){
-        ArrayList<ArrayList<Integer>> resultPaths = findAllPath(root);
+        List<List<Integer>> resultPaths = findAllPath(root);
         // 首先用String类型将二叉树val拼接 并用sumStr存储
         ArrayList<String> sumStr = new ArrayList<>();
-        for (ArrayList<Integer> each:resultPaths){
-            String currentSumStr = "";
+        for (List<Integer> each:resultPaths){
+            StringBuilder currentSumStr = new StringBuilder();
             for(Integer item : each){
-                currentSumStr += item;
+                currentSumStr.append(item);
             }
-            sumStr.add(currentSumStr);
+            sumStr.add(currentSumStr.toString());
 
         }
         int sumNum=0;
@@ -35,12 +36,12 @@ public class BinaryTreeSumNumbers {
     }
 
     /** 全部路径信息存储 */
-    private ArrayList<ArrayList<Integer>> allPaths = new ArrayList<>();
+    private List<List<Integer>> allPaths = new ArrayList<>();
 
     /** 一条路径信息存储 */
-    private ArrayList<Integer> onePath = new ArrayList<>();
+    private List<Integer> onePath = new ArrayList<>();
 
-    private ArrayList<ArrayList<Integer>> findAllPath(TreeNode root){
+    private List<List<Integer>> findAllPath(TreeNode root){
         if(null == root){
             return allPaths;
         }
