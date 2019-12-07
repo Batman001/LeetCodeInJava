@@ -33,14 +33,18 @@ class MaxHeapTest {
         int left = left(i);
         int right = right(i);
         int largest;
-        if(left < heapSize && heap[left]>heap[i])
+        if(left < heapSize && heap[left]>heap[i]) {
             largest = left;
-        else
+        }
+        else{
             largest = i;
-        if(right < heapSize && heap[right]>heap[largest])
+        }
+        if(right < heapSize && heap[right]>heap[largest]) {
             largest = right;
-        if(largest == i || largest >= heapSize)
+        }
+        if(largest == i || largest >= heapSize) {
             return;
+        }
         int temp = heap[i];
         heap[i] = heap[largest];
         heap[largest] = temp;

@@ -6,7 +6,7 @@ package com.leetcode.train.heap;
  */
 public class MaxHeapSortDemo {
     public static void main(String[] args){
-        int [] array = {1,2,3,4,7,8,9,10,14,16};
+        int [] array = {1,3,2,4,8,10,9,18,89,100};
 
         MaxHeap heap=new MaxHeap(array);
         System.out.println("执行最大堆化前堆的结构：");
