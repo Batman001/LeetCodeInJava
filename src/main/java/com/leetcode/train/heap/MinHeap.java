@@ -39,7 +39,7 @@ public class MinHeap {
     void minAdjustHeap(int index) {
         int leftIndex = index * 2 + 1;
         int rightIndex = index * 2 + 2;
-        int minIndex;
+        int minIndex = index;
         if(leftIndex < heapSize && heap[leftIndex] < heap[index]) {
             minIndex = leftIndex;
         } else{

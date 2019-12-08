@@ -1,13 +1,27 @@
-package com.leetcode.train.dp; /**
+package com.leetcode.train.greedyalgorithm; /**
  * Created by batman on 2018/12/27.
  * @author Batman
  */
 
 /**
  * @author Batman
- * Leetcode 55题目 Jump Game
+ * 贪心算法规划leetcode题目总结
  */
-public class Leetcode55 {
+public class LeetcodeTest {
+
+
+    /**
+     * leetcode 55 https://leetcode-cn.com/problems/jump-game/
+     * 给定一个非负整数数组，你最初位于数组的第一个位置。
+     *
+     * 数组中的每个元素代表你在该位置可以跳跃的最大长度。
+     *
+     * 判断你是否能够到达最后一个位置。
+     *
+     * 使用贪心算法求解
+     * @param nums 你可以跳跃的最大距离
+     * @return 如果能跳到最后 返回true 否则返回false
+     */
     public boolean canJump(int[] nums){
         if(nums.length == 1){
 

@@ -1,4 +1,4 @@
-package com.leetcode.train.dp;
+package com.leetcode.train.string;
 
 import java.util.Arrays;
 import java.util.List;
@@ -7,12 +7,13 @@ import java.util.List;
  * @author Batman on 2018/12/19.
  */
 public class LeetCodeTest {
-    public static void main(String[] args) {
-//        System.out.println(romanToInt("MCMXCIV"));
-        String[] test = new String[]{"flower","flow","flove"};
-        String result = longestCommonPrefix(test);
-        System.out.println(result);
-    }
+
+    /**
+     * leetcode 罗马数字转整数
+     * https://leetcode-cn.com/problems/roman-to-integer/
+     * @param s 罗马字符串
+     * @return 返回int数字
+     */
     public static int romanToInt(String s){
 
         String[] romanItem = {"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"};
@@ -52,6 +53,13 @@ public class LeetCodeTest {
         return o.getClass().toString();
     }
 
+
+    /**
+     * leetcode  最长公共前缀
+     * https://leetcode-cn.com/problems/longest-common-prefix/
+     * @param strs 包含公共前缀字符的字符串数组
+     * @return 返回最长公共前缀字符串
+     */
     public static String longestCommonPrefix(String[] strs){
         if(strs == null || strs.length ==0){
             return "";
@@ -74,6 +82,14 @@ public class LeetCodeTest {
             }
         }
         return result;
+    }
+
+
+    public static void main(String[] args) {
+//        System.out.println(romanToInt("MCMXCIV"));
+        String[] test = new String[]{"flower","flow","flove"};
+        String result = longestCommonPrefix(test);
+        System.out.println(result);
     }
 }
 
