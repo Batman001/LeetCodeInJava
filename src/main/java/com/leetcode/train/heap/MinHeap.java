@@ -12,9 +12,9 @@ package com.leetcode.train.heap;
  * 第四步：重复第二步、第三步直到整个数组排序完成
  */
 public class MinHeap {
-    int[] heap;
+    private int[] heap;
     private int heapSize;
-    public MinHeap(int[] array) {
+    private MinHeap(int[] array) {
         this.heap = array;
         this.heapSize = array.length;
     }
@@ -23,7 +23,7 @@ public class MinHeap {
      * 建立小根堆的过程
      * 建完小根堆的过程只是完成了 小根堆的父节点小于左右子节点的过程  并没有完成排序过程
      */
-    void buildMinHeap() {
+    private void buildMinHeap() {
         // 从最后一个非叶子节点开始进行堆的调整 start to build the min heap
         for(int i = heapSize / 2 - 1; i>=0; i--) {
             minAdjustHeap(i);
@@ -36,14 +36,12 @@ public class MinHeap {
      * 动态调整固定索引位置的堆节点
      * @param index 索引位置
      */
-    void minAdjustHeap(int index) {
+    private void minAdjustHeap(int index) {
         int leftIndex = index * 2 + 1;
         int rightIndex = index * 2 + 2;
         int minIndex = index;
         if(leftIndex < heapSize && heap[leftIndex] < heap[index]) {
             minIndex = leftIndex;
-        } else{
-            minIndex = index;
         }
         if(rightIndex < heapSize && heap[rightIndex] < heap[minIndex]) {
             minIndex = rightIndex;
@@ -66,7 +64,7 @@ public class MinHeap {
      * 通过不断交换堆顶元素和堆底元素 实现对于小根堆的排序
      * 共执行n次
      */
-    void heapSort() {
+    private void heapSort() {
         for(int i=0; i<heap.length; i++) {
             // 不断交换堆顶元素和堆尾元素 然后动态调增堆顶元素即可
             int temp = heap[0];

@@ -30,10 +30,16 @@ public class BinarySearchTree {
     }
 
     BinarySearchTree(Node root){
-        root = root;
+        this.root = root;
     }
 
 
+    /**
+     * 二叉查找树的查找节点方法
+     * @param root 二叉查找树根节点
+     * @param key 待搜索二叉树节点的value
+     * @return 返回查找的节点
+     */
     private Node searchRec(Node root, int key) {
         if(root == null){
             return null;
