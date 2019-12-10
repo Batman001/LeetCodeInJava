@@ -2,14 +2,13 @@ package com.leetcode.train.string.kmp;
 
 /**
  * @author Batman on 2019/1/8.
- * @author Batman
- *
+ * 字符串匹配算法
  */
 public class KmpMatch {
     /**
      * 模式字符串当匹配不成功的时, j需要移动的位置 列表计算
      * 索引从0开始
-     * @param ps
+     * @param ps 模式串
      * @return
      */
     private int[] getNext(String ps){
@@ -33,6 +32,12 @@ public class KmpMatch {
         return next;
     }
 
+    /**
+     * KMP算法入口
+     * @param ts 主字符串
+     * @param ps 模式串
+     * @return 返回匹配成功后的模式串在子串中开始的位置
+     */
     private int Kmp(String ts, String ps){
         char[] t = ts.toCharArray();
         char[] p = ps.toCharArray();

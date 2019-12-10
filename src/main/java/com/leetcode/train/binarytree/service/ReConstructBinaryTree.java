@@ -10,17 +10,15 @@ public class ReConstructBinaryTree {
 
     /**
      * 根据二叉树前序和中序遍历结果,构建二叉树
-     * @param pre 前序遍历数组
-     * @param in 中序遍历数组
-     * @return
+     * @param preOrder 前序遍历数组
+     * @param inOrder 中序遍历数组
+     * @return 返回重建后的二叉树的根节点
      */
-    private TreeNode reConstructBinaryTree(int [] pre, int [] in) {
+    private TreeNode reConstructBinaryTree(int[] preOrder, int[] inOrder) {
 
-        /**
-         * 前序的第一个数定为根
-         */
-        TreeNode root = new TreeNode(pre[0]);
-        int len=pre.length;
+        /* 前序的第一个数定根*/
+        TreeNode root = new TreeNode(preOrder[0]);
+        int len = preOrder.length;
         //当只有一个数的时候
         if(len==1){
             root.left = null;
@@ -28,40 +26,44 @@ public class ReConstructBinaryTree {
             return root;
         }
         //找到中序中的根位置
-        int rootval=root.val;
-        int i;
-        for(i=0;i<len;i++){
-            if(rootval==in[i]){
+        int rootVal = root.val;
+        int rootIndex;
+
+        for(rootIndex=0; rootIndex<len; rootIndex++){
+            if(rootVal == inOrder[rootIndex]){
                 break;
             }
         }
+
         //创建左子树
-        if(i>0){
-            int[] pr=new int[i];
-            int[] ino=new int[i];
-            for(int j=0;j<i;j++){
-                pr[j]=pre[j+1];
+        if(rootIndex > 0){
+            // 左子树的前序遍历结果
+            int[] preLeftPart = new int[rootIndex];
+            for(int i=0; i<rootIndex; i++){
+                preLeftPart[i] = preOrder[i+1];
             }
-            for(int j=0;j<i;j++){
-                ino[j]=in[j];
+            // 左子树中序遍历结果
+            int[] inLeftPart = new int[rootIndex];
+            for(int j=0; j<rootIndex; j++){
+                inLeftPart[j] = inOrder[j];
             }
-            root.left=reConstructBinaryTree(pr,ino);
+            // 递归调用重建二叉树的函数方法
+            root.left=reConstructBinaryTree(preLeftPart, inLeftPart);
         }else{
             root.left=null;
         }
         //创建右子树
-        if(len-i-1>0){
-            int[] pr=new int[len-i-1];
-            int[] ino=new int[len-i-1];
-            for(int j=i+1;j<len;j++){
-                ino[j-i-1]=in[j];
-                pr[j-i-1]=pre[j];
+        if(len - rootIndex - 1 > 0){
+            int[] preRightPart = new int[len-rootIndex-1];
+            int[] inRightPart = new int[len-rootIndex-1];
+            for(int j=rootIndex+1; j<len; j++){
+                inRightPart[j-rootIndex-1] = inOrder[j];
+                preRightPart[j-rootIndex-1] = preOrder[j];
             }
-            root.right=reConstructBinaryTree(pr,ino);
+            root.right=reConstructBinaryTree(preRightPart, inRightPart);
         }else{
             root.right=null;
         }
-
 
         return root;
     }
@@ -84,8 +86,6 @@ public class ReConstructBinaryTree {
 
         System.out.printf("重建后的树的后序遍历为:\t");
         v3.visitTree(root);
-
-
 
     }
 
