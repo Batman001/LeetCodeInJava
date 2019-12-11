@@ -3,15 +3,15 @@ package com.leetcode.train.trietree;
 import java.util.HashMap;
 
 /**
+ * TrieTree的数据结构实体类
  * @author Batman on 2018/12/19.
- * @author Batman
  */
-public class TrieTree{
+class TrieTree{
 
     /**
      * 内部节点类
      */
-    private class Node{
+    private static class Node{
         /**
          * 该字串的重复数目 该属性统计重复次数的时候有用,取值为0、1、2、3、4、5…
          */
@@ -32,7 +32,7 @@ public class TrieTree{
          */
         private boolean isLeaf;
 
-        public Node(){
+        Node(){
             duplicateNum = 0;
             prefixNum = 0;
             isLeaf = false;
@@ -45,13 +45,13 @@ public class TrieTree{
      * Trie树树根
      */
     private Node root;
-    public TrieTree(){
+    TrieTree(){
         ///初始化trie 树
-        root=new Node();
+        root= new Node();
     }
 
 
-    public void insert(String words){
+    void insert(String words){
         insert(this.root, words);
     }
     /**
@@ -72,7 +72,7 @@ public class TrieTree{
                 root.childs[index].prefixNum++;
             }else{
                 ///如果不存在
-                root.childs[index]=new Node();
+                root.childs[index]= new Node();
                 root.childs[index].prefixNum++;
             }
 
@@ -92,7 +92,7 @@ public class TrieTree{
      * 遍历Trie树，查找所有的words以及出现次数
      * @return HashMap<String, Integer> map
      */
-    public HashMap<String,Integer> getAllWords(){
+    HashMap<String,Integer> getAllWords(){
 
         return preTraversal(this.root, "");
     }
@@ -103,7 +103,7 @@ public class TrieTree{
      * @param prefix 查询到该节点前所遍历过的前缀
      * @return
      */
-    private  HashMap<String,Integer> preTraversal(Node root,String prefix){
+    private HashMap<String,Integer> preTraversal(Node root,String prefix){
         HashMap<String, Integer> map = new HashMap<String, Integer>(9);
 
         if(root!=null){
@@ -134,12 +134,12 @@ public class TrieTree{
      * @param word
      * @return true if exists ,otherwise  false
      */
-    public boolean isExist(String word){
+    boolean isExist(String word){
         return search(this.root, word);
     }
     /**
      * 查询某字串是否在字典树中
-     * @param word
+     * @param word 某字符串
      * @return true if exists ,otherwise  false
      */
     private boolean search(Node root,String word){
@@ -161,7 +161,7 @@ public class TrieTree{
      * @param prefix 字串前缀
      * @return 字串集以及出现次数，如果不存在则返回null
      */
-    public HashMap<String, Integer> getWordsForPrefix(String prefix){
+    HashMap<String, Integer> getWordsForPrefix(String prefix){
         return getWordsForPrefix(this.root, prefix);
     }
     /**
