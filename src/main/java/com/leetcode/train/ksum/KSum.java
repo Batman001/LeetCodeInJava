@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Leetode 15 three sum
+ * https://leetcode-cn.com/problems/3sum/
  * @author Batman on 2018/11/16.
  * (1)首先第一步进行排序
  * (2)固定一个数字 按照TwoSum的方法进行查找和为 -firstNum的组合
@@ -18,7 +19,7 @@ public class KSum {
     public static List<List<Integer>> twoSum(int[] nums, int target){
         List<List<Integer>> result = new ArrayList<>();
         int len = nums.length;
-        if(len<2){
+        if(len < 2){
             return result;
         }
         Arrays.sort(nums);
@@ -71,7 +72,7 @@ public class KSum {
 
 
         // for all numbers can be the 1st number of triplet
-        for(int i=0;i<len-2;i++){
+        for(int i=0; i<len-2; i++){
             int firstNumber = nums[i];
 
             // skip all duplicated first number

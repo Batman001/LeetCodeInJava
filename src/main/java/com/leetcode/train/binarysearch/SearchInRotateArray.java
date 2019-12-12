@@ -99,10 +99,69 @@ public class SearchInRotateArray {
     }
 
 
+    /**
+     * 返回数组中出现的第一个元素 (数组中包含重复元素)
+     * @param nums 升序排序数组
+     * @param target 待查找数字
+     * @return first index
+     */
+    public static int searchFirstTar(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+        int mid = 0;
+
+        while (left < right) {
+            mid = (left + right) / 2;
+            if(nums[mid] > target) {
+                right = mid - 1;
+            } else if(nums[mid] < target) {
+                left = mid + 1;
+            } else {
+                if (mid - 1 > 0 && nums[mid-1] == nums[mid]) {
+                    mid -= 1;
+                }
+                return mid;
+            }
+        }
+        return -1;
+
+    }
+
+    /**
+     * 二分查找返回数组中出现的最后一个元素 (数组中包含重复元素)
+     * @param nums 升序数组
+     * @param target 待查找数字
+     * @return 最后一个索引
+     */
+    public static int searchLastTar(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+        int mid = 0;
+
+        while (left <= right) {
+            mid = (left + right) / 2;
+            if(nums[mid] > target) {
+                right = mid - 1;
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else {
+                if(mid <= nums.length - 1 && nums[mid] == nums[mid + 1]) {
+                    mid += 1;
+                }
+                return mid;
+            }
+        }
+
+        return -1;
+    }
+
+
     public static void main(String[] args) {
         int[] nums = {4,5,6,7,8,9,10,1,2,3};
+        int[] dumpNums = {1,2,3,3,5,6,6,9,10,12,23,34};
         int res = findMin(nums);
         System.out.println(res);
+
+        System.out.println("二分查找重复元素返回第一个索引结果为:" + searchFirstTar(dumpNums, 6));
+        System.out.println("二分查找重复元素返回最后一个索引为结果为:" + searchLastTar(dumpNums, 6));
     }
 
 }
