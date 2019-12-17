@@ -23,7 +23,7 @@ public class MyLinkedList {
      * 链表添加结点
      * 找到链表的末尾结点,把新添加的数据作为末尾结点的后续结点
      */
-    public void addNode(int val){
+    void addNode(int val){
         ListNode newNode = new ListNode(val);
         if(head == null){
             head = newNode;
@@ -40,12 +40,12 @@ public class MyLinkedList {
     /**
      * 在固定的索引位置插入元素
      * 这里默认链表的头结点是含有值的  是链表的第一个element
-     * @param index
-     * @param val
+     * @param index 待插入节点的位置索引
+     * @param val 带插入节点的val
      */
-    public void addAtIndex(int index, int val){
+    void addAtIndex(int index, int val){
         if(index<0 || index>size){
-            return;
+            return ;
         }
         else if(index == size){
             // 在尾部添加元素
@@ -69,9 +69,9 @@ public class MyLinkedList {
     /**
      * Add a node of value val before the first element of the linked list
      * After the insertion, the new node will be the first node of the linked list
-     * @param val
+     * @param val 头部插入节点的val值
      */
-    public void addAtHead(int val){
+    void addAtHead(int val){
         ListNode headNode = new ListNode(val);
         if(head == null){
             head = headNode;
@@ -85,9 +85,9 @@ public class MyLinkedList {
 
     /**
      * 在链表尾部添加节点
-     * @param val
+     * @param val 待添加节点的val值
      */
-    public void addAtTail(int val) {
+    void addAtTail(int val) {
         ListNode tailNode = new ListNode(val);
         ListNode cur = head;
         while(cur.next != null){
@@ -101,8 +101,8 @@ public class MyLinkedList {
     /**
      * 链表删除节点:
      * 把要删除的节点的前节点指向要删除节点的后节点,即直接跳过待删除的节点
-     * @param index
-     * @return
+     * @param index 待删除节点的索引
+     * @return boolean
      */
     public boolean deleteNode(int index){
         if(index<1 || index>length()){
@@ -137,7 +137,7 @@ public class MyLinkedList {
 
     /**
      * 删除链表上固定索引上的值
-     * @param index
+     * @param index 待删除链表位置索引
      */
     public void deleteAtIndex(int index){
         if(index<1 || index>=size){
@@ -160,7 +160,7 @@ public class MyLinkedList {
 
     /**
      * 求链表的长度
-     * @return
+     * @return int 返回链表的长度
      */
     public int length(){
         int length=0;
@@ -175,7 +175,7 @@ public class MyLinkedList {
     /**
      * 打印节点
      */
-    public void printLink(){
+    void printLink(){
         ListNode curNode = head;
         while(curNode != null){
             System.out.printf(curNode.val + "->");
@@ -190,9 +190,9 @@ public class MyLinkedList {
     /**
      * 链表节点排序,返回排序后的头结点
      * 选择排序算法,及每次都选出未排序节点中最小的节点,与第一个未排序节点交换
-     * @return
+     * @return ListNode
      */
-    public ListNode linkSort(){
+    ListNode linkSort(){
         ListNode curNode = head;
         while(curNode!=null){
             ListNode nextNode = curNode.next;
@@ -213,7 +213,7 @@ public class MyLinkedList {
      * 去掉单链表重复元素
      * 需要额外的存储空间hashtable,调用hashtable.containKey()判断重复节点
      */
-    public void distinctLink(){
+    void distinctLink(){
         ListNode curNode = head;
         ListNode pre = null;
         Hashtable<Integer, Integer> hb = new Hashtable<>();
@@ -233,10 +233,10 @@ public class MyLinkedList {
      * 返回倒数第K个节点
      * pre指针先找到整数第K个节点
      * 然后pre指针和last指针一起移动,直至pre指针为空,此时last指针指向节点即为倒数第K个节点
-     * @param k
-     * @return
+     * @param k 倒数第K个
+     * @return ListNode
      */
-    public ListNode findRevertNode(int k){
+    ListNode findRevertNode(int k){
         if(k<1 || k>length()){
             return null;
         }
@@ -254,10 +254,10 @@ public class MyLinkedList {
 
     /**
      * 查找第k个节点
-     * @param k
-     * @return
+     * @param k 数值 第个节点
+     * @return ListNode
      */
-    public ListNode findNode(int k){
+    ListNode findNode(int k){
         if(k<1 || k>length()){
             return null;
         }
@@ -271,7 +271,7 @@ public class MyLinkedList {
     /**
      * 反向链表,在反转指针前一定要保存好下个节点的指针
      */
-    public void reverseLink(){
+    void reverseLink(){
         ListNode curNode = head;
         ListNode preNode = null;
         while(curNode!=null){
@@ -289,11 +289,11 @@ public class MyLinkedList {
 
     /**
      * 反向输出链表
-     * (1)先反转链表,在输出链表,需要遍历链表两次
+     * (1)先反转链表, 再输出链表,需要遍历链表两次
      * (2)把链表中元素放入栈中存储,需要维护栈的空间
      * (3)通过递归实现(2)方法,递归起始就是将先执行的数据压入栈中,再一次出栈
      */
-    public void reversePrt(ListNode node){
+    void reversePrt(ListNode node){
         if(node != null){
             reversePrt(node.next);
             System.out.printf(node.val + "->");
@@ -307,7 +307,7 @@ public class MyLinkedList {
      * 快指针每次移动两个节点,慢指针每次移动一个节点
      * 当快指针移动至尾节点时, 慢指针指向即为链表中间节点
      */
-    public ListNode findMiddleNode(){
+    ListNode findMiddleNode(){
         ListNode slowPoint = head;
         ListNode fastPoint = head;
 
@@ -325,7 +325,7 @@ public class MyLinkedList {
      * 判断链表是否有环
      * 通过快慢指针判断(如果快慢指针相等时,说明有环)
      */
-    public boolean isRinged(){
+    boolean isRinged(){
         ListNode slowPoint = head;
         ListNode fastPoint = head;
         while(fastPoint.next != null && fastPoint.next.next!=null){
@@ -388,7 +388,7 @@ public class MyLinkedList {
     /**
      * 返回链表的最后一个节点
      */
-    public ListNode getLastNode(){
+    ListNode getLastNode(){
         ListNode curNode = head;
         while(curNode.next!=null){
             curNode = curNode.next;
@@ -403,16 +403,15 @@ public class MyLinkedList {
      * 1. 如果待删除节点是尾节点,由于单链表不知道其前节点,没有办法删除
      * 2. 如果删除的节点不是尾节点,则将其该节点的值与下一节点交换,然后该节点的指针指向下一节点的后续节点
      */
-    public boolean deleteSpecialNode(ListNode n){
+    void deleteSpecialNode(ListNode n){
         if(n.next == null){
             System.out.println("删除节点为尾节点,单链表不知道其前节点,没有办法删除");
-            return false;
+            return;
         }
         int temp = n.val;
         n.val = n.next.val;
         n.next.val = temp;
         n.next = n.next.next;
-        return true;
     }
 
 
@@ -420,7 +419,7 @@ public class MyLinkedList {
      * 判断两个链表是否相交(链表无环情形)
      * 两个链表相交,则它们的尾节点一定相同,比较两个链表的尾节点即可
      */
-    public static boolean isCross(ListNode head1, ListNode head2){
+    static boolean isCross(ListNode head1, ListNode head2){
         ListNode temp1 = head1;
         ListNode temp2 = head2;
         while(temp1.next != null){
@@ -439,8 +438,10 @@ public class MyLinkedList {
      * 2. 求出两个链表的长度之差 len = length1-length2
      * 3. 让较长链表先走len步
      * 4. 然后两个链表同时移动,每移动一次就比较他们节点是否相等,第一个相等的节点即为所求
+     * leetcode 160 相交链表
+     * https://leetcode-cn.com/problems/intersection-of-two-linked-lists/
      */
-    public static ListNode findFirstCrossPoint(MyLinkedList m1, MyLinkedList m2){
+    static ListNode getIntersectionNode(MyLinkedList m1, MyLinkedList m2){
         // 链表不相交
         if(!isCross(m1.head, m2.head)){
             return null;
@@ -450,14 +451,16 @@ public class MyLinkedList {
         ListNode head1 = m1.head;
         ListNode head2 = m2.head;
 
-        int len = length1-length2;
+        int len = length1 - length2;
+        // 先让headA先走len步
         if(len>0){
             for(int i=0;i<len;i++){
                 head1 = head1.next;
             }
         }
+        // 先让headB先走len步
         else{
-            for(int i=0;i<len;i++){
+            for(int i=0;i<-len;i++){
                 head2 = head2.next;
             }
         }

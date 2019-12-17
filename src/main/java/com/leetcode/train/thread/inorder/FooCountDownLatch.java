@@ -4,6 +4,7 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * @author Batman create on 2019-09-09 17:36
+ * 使用CountDownLatch实现按照顺序执行多线程
  */
 public class FooCountDownLatch {
 

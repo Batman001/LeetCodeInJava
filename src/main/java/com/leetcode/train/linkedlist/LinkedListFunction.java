@@ -195,7 +195,7 @@ public class LinkedListFunction {
      * 根据初始head节点 打印LinkedList
      * @param head
      */
-    public void printNode(ListNode head){
+    void printNode(ListNode head){
         if(head == null){
             return;
         }
@@ -210,12 +210,13 @@ public class LinkedListFunction {
 
     /**
      * LeetCode 328 Odd Event Linked List
+     * https://leetcode-cn.com/problems/odd-even-linked-list/
      * 类似于oddEvenList 但是不用新建表,而是在原来基础之上
      * 奇数:odd  偶数:even
-     * @param head
-     * @return
+     * @param head 头结点
+     * @return 翻转奇偶节点的链表
      */
-    public ListNode oddEvenList2(ListNode head){
+    ListNode oddEvenList2(ListNode head){
         if(head == null || head.next == null) {
             return head;
         }

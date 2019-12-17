@@ -24,6 +24,9 @@ class LRUCache {
 
     /**
      * 使用LinkedHashMap保持插入顺序 缓存的map
+     *  1.插入顺序：先添加的在前面，后添加的在后面。修改操作不影响顺序
+     * 2.访问顺序：所谓访问指的是get/put操作，对一个键执行get/put操作后，其对应的键值对会移动到链表末尾，所以最末尾的是最近访问的，
+     * 最开始的是最久没有被访问的，这就是访问顺序。
      */
     private Map<Integer, Integer> map = new LinkedHashMap<>();
 
@@ -32,10 +35,11 @@ class LRUCache {
     }
 
     public int get(int key) {
-        if (map.keySet().contains(key)) {
+        if (map.containsKey(key)) {
             int value = map.get(key);
+
+            // 保证每次查询后，都在末尾。因此可以先删除key然后再执行添加插入 可以保证在LinkedHashMap的链表末尾
             map.remove(key);
-            // 保证每次查询后，都在末尾
             map.put(key, value);
             return value;
         }
@@ -43,7 +47,8 @@ class LRUCache {
     }
 
     public void put(int key, int value) {
-        if (map.keySet().contains(key)) {
+        // 如果key值在LinkedHashMap中存储的有 需要进行先删除 然后再put进map中
+        if (map.containsKey(key)) {
             map.remove(key);
         } else if (map.size() == cap) {
             Iterator<Map.Entry<Integer, Integer>> iterator = map.entrySet().iterator();

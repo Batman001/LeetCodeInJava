@@ -1,5 +1,7 @@
 package com.leetcode.train.linkedlist;
 
+import java.util.Objects;
+
 /**
  * @author Batman on 2018/12/19.
  */
@@ -103,7 +105,7 @@ public class LinkedListTest {
         m2.printLink();
 
 
-        /**
+        /*
          * 避免通过实例访问静态成员变量(包含函数),无谓增加编译器解析成本
          * 直接使用类名访问即可
          */
@@ -112,7 +114,7 @@ public class LinkedListTest {
 
         System.out.println("-----********-------");
         // 如果两个链表相交,求其第一个交点值
-        System.out.println(MyLinkedList.findFirstCrossPoint(m1,m2).val);
+        System.out.println(Objects.requireNonNull(MyLinkedList.getIntersectionNode(m1, m2)).val);
 
         ListNode l1 = new ListNode(1);
         ListNode l2 = new ListNode(2);
