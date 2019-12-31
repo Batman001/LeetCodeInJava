@@ -28,7 +28,7 @@ class MaxHeap {
      * 建堆只是保证了大根堆的父节点大于左右子节点
      */
     void buildMaxHeap() {
-        for(int i=heapSize / 2 - 1; i>=0; i--) {
+        for(int i=heapSize /2 - 1; i>=0; i--) {
             //依次向上将当前子树最大堆化
             maximize(i);
         }
@@ -57,30 +57,30 @@ class MaxHeap {
         int l = left(i);
         int r = right(i);
         // 使用largest记录最大值的位置索引
-        int largest;
+        int largest = i;
 
         // 如果左孩子节点的大于父节点的值 则进行互换
         if(l<heapSize&&heap[l]>heap[i]){
             largest=l;
-        }
-        else{
-            largest=i;
         }
 
         if(r<heapSize&&heap[r]>heap[largest]){
             largest=r;
         }
 
-        //如果largest等于i说明i是最大元素 largest超出heap范围说明不存在比i节点大的子女
-        if(largest==i||largest>=heapSize){
-            return ;
+//        //如果largest等于i说明i是最大元素 largest超出heap范围说明不存在比i节点大的子女
+//        if(largest==i||largest>=heapSize){
+//            return ;
+//        }
+
+        if(i != largest) {
+            //交换i与largest对应的元素位置，在largest位置递归调用 maxmize
+            int tmp=heap[i];
+            heap[i]=heap[largest];
+            heap[largest]=tmp;
+            maximize(largest);
         }
 
-        //交换i与largest对应的元素位置，在largest位置递归调用 maxmize
-        int tmp=heap[i];
-        heap[i]=heap[largest];
-        heap[largest]=tmp;
-        maximize(largest);
     }
     private void increaseValue(int i,int val) {
         heap[i]=val;

@@ -392,6 +392,7 @@ public class FunctionTreeNode {
         }
         TreeNode left = lowestCommonAncestor(root.left, p, q);
         TreeNode right = lowestCommonAncestor(root.right, p, q);
+        // 如果在左子树找到了最近公共祖先节点 在右子树也找最先进公共祖先节点 说明肯定左右子树有一个为Null
         if (left != null && right != null) {
             return root;
         }
