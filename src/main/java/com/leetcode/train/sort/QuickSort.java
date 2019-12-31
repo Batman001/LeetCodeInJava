@@ -18,7 +18,7 @@ public class QuickSort {
      * @param left 排序左边界
      * @param right 右边有边界
      */
-    void quickSort(int[] arr, int left, int right) {
+    private void quickSort(int[] arr, int left, int right) {
         if (left>=right) {
             return ;
         }

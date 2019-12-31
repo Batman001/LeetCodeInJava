@@ -14,7 +14,7 @@ public class SearchInRotateArray {
      * @param nums int类型数组
      * @return 返回数组中最小值
      */
-    public static int findMin(int[] nums){
+    private static int findMin(int[] nums){
 
         // 如果数组没有旋转 则返回数组第一个元素
         if(nums.length == 1 || nums[0] < nums[nums.length - 1]){
@@ -105,7 +105,7 @@ public class SearchInRotateArray {
      * @param target 待查找数字
      * @return first index
      */
-    public static int searchFirstTar(int[] nums, int target) {
+    private static int searchFirstTar(int[] nums, int target) {
         int left = 0, right = nums.length - 1;
         int mid = 0;
 
@@ -132,7 +132,7 @@ public class SearchInRotateArray {
      * @param target 待查找数字
      * @return 最后一个索引
      */
-    public static int searchLastTar(int[] nums, int target) {
+    private static int searchLastTar(int[] nums, int target) {
         int left = 0, right = nums.length - 1;
         int mid = 0;
 

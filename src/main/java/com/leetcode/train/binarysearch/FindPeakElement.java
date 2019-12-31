@@ -25,7 +25,7 @@ public class FindPeakElement {
      * @param nums 待查找目标数组
      * @return 峰值元素的索引位置
      */
-    public static int findPeakElement(int[] nums) {
+    private static int findPeakElement(int[] nums) {
 
         // 二分搜索
         // 如果nums[i]<nums[i+1] 则[i+1,n]一定有peak，即使完全递增，n[n]也是peak
@@ -42,11 +42,9 @@ public class FindPeakElement {
             mid = (left + right) >> 1;
             if (nums[mid] < nums[mid + 1]) {
                 left = mid + 1;
-                continue;
             }
             else {
                 right = mid;
-                continue;
             }
         }
         return left;
