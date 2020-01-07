@@ -31,30 +31,30 @@ public class WordSearch {
      * @param board 二维图
      * @param word 需要匹配单词
      * @param index word需要开始匹配的索引位置
-     * @param row_index 二维图行索引位置
-     * @param col_index 二维图列索引位置
+     * @param rowIndex 二维图行索引位置
+     * @param colIndex 二维图列索引位置
      * @param visited 记录某位置是否已经遍历过的布尔列表
      * @return true或者false
      */
-    private boolean dfs(char[][] board, String word, int index, int row_index, int col_index, boolean[][] visited) {
+    private boolean dfs(char[][] board, String word, int index, int rowIndex, int colIndex, boolean[][] visited) {
         if(index == word.length()){
             return true;
         }
-        if(row_index<0 || col_index<0 || row_index>=board.length || col_index>=board[0].length){
+        if(rowIndex<0 || colIndex<0 || rowIndex>=board.length || colIndex>=board[0].length){
             return false;
         }
-        if(visited[row_index][col_index]){
+        if(visited[rowIndex][colIndex]){
             return false;
         }
-        if(board[row_index][col_index] != word.charAt(index)){
+        if(board[rowIndex][colIndex] != word.charAt(index)){
             return false;
         }
-        visited[row_index][col_index] = true;
-        boolean res = dfs(board, word,index+1,row_index+1, col_index, visited) ||
-                dfs(board, word,index+1,row_index-1, col_index, visited) ||
-                dfs(board, word, index+1, row_index, col_index+1, visited) ||
-                dfs(board, word, index+1, row_index, col_index-1, visited);
-        visited[row_index][col_index] = false;
+        visited[rowIndex][colIndex] = true;
+        boolean res = dfs(board, word,index+1,rowIndex+1, colIndex, visited) ||
+                dfs(board, word,index+1,rowIndex-1, colIndex, visited) ||
+                dfs(board, word, index+1, rowIndex, colIndex+1, visited) ||
+                dfs(board, word, index+1, rowIndex, colIndex-1, visited);
+        visited[rowIndex][colIndex] = false;
         return res;
     }
 
