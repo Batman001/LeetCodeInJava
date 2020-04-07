@@ -7,19 +7,19 @@ public class MaxHeap {
     private int[] nums;
     private int heapSize;
 
-    public MaxHeap(int[] nums) {
+    private MaxHeap(int[] nums) {
         this.nums = nums;
         this.heapSize = nums.length;
     }
 
 
-    void buildHeap() {
+    private void buildHeap() {
         for(int i=heapSize/2 - 1; i>=0; i--){
             maxChange(i);
         }
     }
 
-    void maxChange(int index) {
+    private void maxChange(int index) {
         int leftIndex = index * 2 + 1;
         int rightIndex = index * 2 + 2;
         int maxIndex = index;
@@ -43,7 +43,7 @@ public class MaxHeap {
     }
 
 
-    void heapSort() {
+    private void heapSort() {
         for(int i=0; i<nums.length; i++) {
             int temp = nums[0];
             nums[0] = nums[heapSize - 1];
@@ -55,9 +55,9 @@ public class MaxHeap {
         }
     }
 
-    void printNum(){
+    private void printNum(){
         for (int item: nums) {
-            System.out.printf(item + ",");
+            System.out.print(item + ",");
         }
         System.out.println();
 

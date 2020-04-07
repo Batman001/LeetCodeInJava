@@ -18,8 +18,8 @@ public class MaxHeapSortTestDemo {
      * @param array 待打印的数组array
      */
     private static void printHeap(int[] array) {
-        for(int i=0;i<array.length;i++){
-            System.out.print(array[i]+ " ");
+        for (int item : array) {
+            System.out.print(item + " ");
         }
         System.out.println();
     }

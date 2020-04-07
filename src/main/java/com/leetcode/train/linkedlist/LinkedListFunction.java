@@ -116,11 +116,7 @@ public class LinkedListFunction {
             }
         }
         // 判断r1与r2的元素是否相同
-        if(r1.equals(r2)){
-            return true;
-        }else {
-            return false;
-        }
+        return r1.equals(r2);
     }
 
 
@@ -200,7 +196,7 @@ public class LinkedListFunction {
             return;
         }
         while(head!=null){
-            System.out.printf(head.val + "->");
+            System.out.print(head.val + "->");
             head = head.next;
         }
 
@@ -243,7 +239,7 @@ public class LinkedListFunction {
      *
      * 解题思路:将链表做成环 然后从 链表长度-k  的位置进行断开
      */
-    public ListNode rotateRight(ListNode head, int k){
+    ListNode rotateRight(ListNode head, int k){
         if(head == null || k == 0){
             return head;
         }
@@ -324,7 +320,7 @@ public class LinkedListFunction {
      * @param k 每次翻转的长度
      * @return 翻转后链表的头指针
      */
-    public ListNode reverseKGroup(ListNode head, int k){
+    ListNode reverseKGroup(ListNode head, int k){
         // 保存头结点
         ListNode cur = head;
 

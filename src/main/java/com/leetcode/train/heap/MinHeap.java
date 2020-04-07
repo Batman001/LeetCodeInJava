@@ -104,7 +104,4 @@ public class MinHeap {
         printHeapTree(heap.heap);
     }
 
-
-
-
 }

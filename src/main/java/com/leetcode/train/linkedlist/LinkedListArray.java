@@ -14,7 +14,7 @@ public class LinkedListArray {
      */
     LinkedListArray next = null;
 
-    public void setValue(Object value) {
+    void setValue(Object value) {
         this.value = value;
     }
 
@@ -22,7 +22,7 @@ public class LinkedListArray {
         this.next = next;
     }
 
-    public Object getValue() {
+    Object getValue() {
         return value;
     }
 

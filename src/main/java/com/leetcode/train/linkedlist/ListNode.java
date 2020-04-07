@@ -3,7 +3,7 @@ package com.leetcode.train.linkedlist;
 /**
  * @author Batman on 2018/12/19.
  */
-public class ListNode {
+class ListNode {
     int val;
     ListNode next;
 
