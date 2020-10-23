@@ -20,7 +20,7 @@ public class Singleton {
     private static Singleton instance = null;
 
     /**
-     * 通过Singleton,getInstance方法暴露外部，实现单例模式的加载
+     * 通过Singleton.getInstance方法暴露外部，实现单例模式的加载
      * @return 内存中唯一的singleton instance
      */
     public static Singleton getInstance() {
