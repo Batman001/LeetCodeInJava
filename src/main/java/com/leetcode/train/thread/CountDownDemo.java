@@ -1,6 +1,6 @@
 package com.leetcode.train.thread;
 
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
+//import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
 import java.util.Random;
 import java.util.concurrent.*;
@@ -33,20 +33,20 @@ public class CountDownDemo implements Runnable {
 
     public static void main(String[] args) throws InterruptedException {
 
-        ThreadFactory namedThreadFactory = new ThreadFactoryBuilder().setNameFormat("com.leetcode.train.thread-call-runner-%d").build();
-
-        ExecutorService exec = new ThreadPoolExecutor(10,20,200L,
-                TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>(), namedThreadFactory);
-
-        for(int i=0; i < 10; i++) {
-            exec.submit(demo);
-        }
-
-        latch.await();
-
-        System.out.println("Fire !!!! 发射火箭...🚀");
-
-        exec.shutdown();
+//        ThreadFactory namedThreadFactory = new ThreadFactoryBuilder().setNameFormat("com.leetcode.train.thread-call-runner-%d").build();
+//
+//        ExecutorService exec = new ThreadPoolExecutor(10,20,200L,
+//                TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>(), namedThreadFactory);
+//
+//        for(int i=0; i < 10; i++) {
+//            exec.submit(demo);
+//        }
+//
+//        latch.await();
+//
+//        System.out.println("Fire !!!! 发射火箭...🚀");
+//
+//        exec.shutdown();
     }
 
 }

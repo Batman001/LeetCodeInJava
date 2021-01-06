@@ -91,7 +91,7 @@ public class MinHeap {
 
 
     public static void main(String[] args) {
-        int [] array = {1,3,2,4,8,10,9,18,89,100};
+        int [] array = {1, 3, 2, 4, 8, 10, 9, 18, 89, 100};
 
         MinHeap heap=new MinHeap(array);
         System.out.println("执行最小堆化前堆的结构：");

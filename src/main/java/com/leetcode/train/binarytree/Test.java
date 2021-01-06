@@ -1,9 +1,6 @@
 package com.leetcode.train.binarytree;
 
-import com.leetcode.train.binarytree.TreeNode;
 import com.leetcode.train.binarytree.service.FunctionTreeNode;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**

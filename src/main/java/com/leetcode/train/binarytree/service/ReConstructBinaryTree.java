@@ -48,7 +48,7 @@ public class ReConstructBinaryTree {
                 inLeftPart[j] = inOrder[j];
             }
             // 递归调用重建二叉树的函数方法
-            root.left=reConstructBinaryTree(preLeftPart, inLeftPart);
+            root.left = reConstructBinaryTree(preLeftPart, inLeftPart);
         }else{
             root.left=null;
         }
@@ -60,7 +60,7 @@ public class ReConstructBinaryTree {
                 inRightPart[j-rootIndex-1] = inOrder[j];
                 preRightPart[j-rootIndex-1] = preOrder[j];
             }
-            root.right=reConstructBinaryTree(preRightPart, inRightPart);
+            root.right = reConstructBinaryTree(preRightPart, inRightPart);
         }else{
             root.right=null;
         }
