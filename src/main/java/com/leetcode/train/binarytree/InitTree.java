@@ -17,7 +17,7 @@ public class InitTree {
         TreeNode k = new TreeNode(7, null, null);
         TreeNode d = new TreeNode(6, null, k);
         TreeNode b = new TreeNode(8, d, f);
-        TreeNode a = new TreeNode(15, b, c);
-        return a;
+        return new TreeNode(15, b, c);
+
     }
 }

@@ -8,7 +8,7 @@ import java.util.Stack;
  */
 public class BSTIterator {
     /** 本质上其实是中序遍历 */
-    private Stack<TreeNode> stack;
+    private final Stack<TreeNode> stack;
     /** constructor function */
     public BSTIterator(TreeNode root){
         stack = new Stack<>();

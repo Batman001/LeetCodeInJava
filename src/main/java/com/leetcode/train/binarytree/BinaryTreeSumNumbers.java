@@ -36,10 +36,10 @@ public class BinaryTreeSumNumbers {
     }
 
     /** 全部路径信息存储 */
-    private List<List<Integer>> allPaths = new ArrayList<>();
+    private final List<List<Integer>> allPaths = new ArrayList<>();
 
     /** 一条路径信息存储 */
-    private List<Integer> onePath = new ArrayList<>();
+    private final List<Integer> onePath = new ArrayList<>();
 
     private List<List<Integer>> findAllPath(TreeNode root){
         if(null == root){
